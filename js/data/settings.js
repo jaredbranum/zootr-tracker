@@ -27,7 +27,7 @@ define({
   },
   "Keysanity": false,
   "Fast Ganon": true,
-  "Shuffle Songs": false,
+  // "Shuffle Songs": false,
   "Shuffle Weird Egg": false,
   "Shuffle Ocarinas": false,
   "Shuffle Gerudo's Card": false,

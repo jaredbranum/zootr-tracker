@@ -121,6 +121,20 @@ ul.item-checks li input[type=checkbox]:checked + label {
   position: sticky;
   top: 0;
   float: right;
+  min-height: calc(100vh - 30px);
+}
+
+#footer {
+  line-height: 20px;
+  font-size: 10px;
+  padding-top: 20px;
+  text-align: right;
+  height: 30px;
+  opacity: 0.8;
+}
+
+#footer .bugs {
+  width: 20px;
 }
 
 #age-selector {
