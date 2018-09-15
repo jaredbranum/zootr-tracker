@@ -12,7 +12,7 @@ define(["classes/item", "classes/song", "data/ages", "data/abilities", "data/loc
     "MAGIC_BEANS": new Item("Magic Beans"),
     "MEGATON_HAMMER": new Item("Megaton Hammer", Age.ADULT, [Abilities.ATTACK, Abilities.BLAST, Abilities.CRUMBLE, Abilities.SLASH]),
     "BOTTLE": new Item("Bottle", Age.ANY, [Abilities.BOTTLE], {count: 0, max: 4}),
-    "RUTOS_LETTER": new Item("Ruto's Letter", Age.ANY),
+    "RUTOS_LETTER": new Item("Ruto's Letter", Age.ANY, [Abilities.BOTTLE]),
     "BLUE_FIRE": new Item("Blue Fire", Age.ANY, [Abilities.CRUMBLE, Abilities.BOTTLE, Abilities.IGNITE]),
     "MASK_OF_TRUTH": new Item("Mask of Truth", Age.CHILD),
     "CLAIM_CHECK": new Item("Claim Check", Age.ADULT),
@@ -55,7 +55,7 @@ define(["classes/item", "classes/song", "data/ages", "data/abilities", "data/loc
   Items.LIGHT_ARROWS = new Item("Light Arrows", Age.ADULT, [], {requirements: [Items.FAIRY_BOW, Items.MAGIC]});
   Items.NAYRUS_LOVE = new Item("Nayru's Love", Age.ANY, [], {requirements: [Items.MAGIC]});
   Items.SILVER_GAUNTLETS = new Item("Silver Gauntlets", Age.ADULT, [Abilities.STRENGTH], {supers: [Items.GOLDEN_GAUNTLETS]});
-  Items.GORONS_BRACELET = new Item("Goron's Bracelet", Age.ADULT, [Abilities.STRENGTH], {supers: [Items.SILVER_GAUNTLETS, Items.GOLDEN_GAUNTLETS]});
+  Items.GORONS_BRACELET = new Item("Goron's Bracelet", Age.ANY, [Abilities.STRENGTH], {supers: [Items.SILVER_GAUNTLETS, Items.GOLDEN_GAUNTLETS]});
   Items.SILVER_SCALE = new Item("Silver Scale", Age.ANY, [Abilities.DIVE, Abilities.SINK], {supers: [Items.GOLDEN_SCALE]});
   Items.ADULTS_WALLET = new Item("Adult's Wallet", Age.ANY, [], {supers: [Items.GIANTS_WALLET]});
 

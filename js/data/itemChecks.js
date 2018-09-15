@@ -25,10 +25,10 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {age: Age.CHILD, items: [Items.FAIRY_OCARINA]}
     ]),
     new ItemCheck("Grotto (GC)", Locations.LOST_WOODS, [
-      {age: Age.CHILD, abilities: [Abilities.BLAST]}
+      {abilities: [Abilities.BLAST]}
     ]),
     new ItemCheck("Grotto (SFM)", Locations.LOST_WOODS, [
-      {age: Age.CHILD, abilities: [Abilities.BLAST]}
+      {abilities: [Abilities.BLAST]}
     ]),
     new ItemCheck("Skull Mask Reward", Locations.LOST_WOODS, [
       {age: Age.CHILD, items: [Items.SKULL_MASK]}
@@ -636,8 +636,7 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {items: [Items.HOOKSHOT, Items.HOVER_BOOTS]},
       {items: [Items.HOOKSHOT, Items.HYLIAN_SHIELD], abilities: [Abilities.BOMB], glitches: true},
       {items: [Items.HOOKSHOT, Items.MIRROR_SHIELD], abilities: [Abilities.BOMB], glitches: true},
-      {items: [Items.BOMBS, Items.HYLIAN_SHIELD], glitches: true},
-      {items: [Items.BOMBS, Items.MIRROR_SHIELD], glitches: true}
+      {items: [Items.BOMBS], abilities: [Abilities.SHIELD], offLogic: true},
     ]),
     new ItemCheck("Invisible Spinner 1", Locations.SHADOW_TEMPLE, [
       {items: [Items.HOVER_BOOTS]},

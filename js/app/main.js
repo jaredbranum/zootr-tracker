@@ -165,7 +165,7 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
     }.bind(this);
 
     this.changeAge = function(){
-      $('.collected').addClass('no-animation')[0].offsetHeight;
+      $('.collected').addClass('no-animation');
       this.inventory.age = this.currentAge();
       this.refreshAccessible();
       this.applySettings();
