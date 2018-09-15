@@ -1,4 +1,4 @@
-define(["require", "data/ages", "data/items"], function(require, Age){
+define(["require", "data/ages"], function(require, Age){
   return function Item(name, age, abilities, more){
     this.name = name;
     this.key = name.replace(/'/g, '').replace(/\s/g, '_').toUpperCase();
