@@ -455,6 +455,9 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {items: [Items.HYLIAN_SHIELD], abilities: [Abilities.BOMB], glitches: true},
       {items: [Items.MIRROR_SHIELD], abilities: [Abilities.BOMB], glitches: true},
     ]),
+    new ItemCheck("Block Room Eye", Locations.FOREST_TEMPLE, [
+      {items: [Items.FAIRY_BOW]},
+    ]),
     new ItemCheck("Boss Key", Locations.FOREST_TEMPLE, [
       {items: [Items.FAIRY_BOW], abilities: [Abilities.STRENGTH]}
     ]),
@@ -636,7 +639,7 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {items: [Items.HOOKSHOT, Items.HOVER_BOOTS]},
       {items: [Items.HOOKSHOT, Items.HYLIAN_SHIELD], abilities: [Abilities.BOMB], glitches: true},
       {items: [Items.HOOKSHOT, Items.MIRROR_SHIELD], abilities: [Abilities.BOMB], glitches: true},
-      {items: [Items.BOMBS], abilities: [Abilities.SHIELD], offLogic: true},
+      {items: [Items.BOMBS, Items.HOVER_BOOTS], abilities: [Abilities.SHIELD], offLogic: true},
     ]),
     new ItemCheck("Invisible Spinner 1", Locations.SHADOW_TEMPLE, [
       {items: [Items.HOVER_BOOTS]},
