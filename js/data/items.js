@@ -14,7 +14,7 @@ define(["classes/item", "classes/song", "data/ages", "data/abilities", "data/loc
     "BOTTLE": new Item("Bottle", Age.ANY, [Abilities.BOTTLE], {count: 0, max: 4}),
     "RUTOS_LETTER": new Item("Ruto's Letter", Age.ANY, [Abilities.BOTTLE]),
     "BLUE_FIRE": new Item("Blue Fire", Age.ANY, [Abilities.CRUMBLE, Abilities.BOTTLE, Abilities.IGNITE]),
-    "MASK_OF_TRUTH": new Item("Mask of Truth", Age.CHILD),
+    "MASK_OF_TRUTH": new Item("Mask of Truth", Age.CHILD, [Abilities.ZLETTER]),
     "CLAIM_CHECK": new Item("Claim Check", Age.ADULT),
     "KOKIRI_SWORD": new Item("Kokiri Sword", Age.CHILD, [Abilities.ATTACK, Abilities.SLASH]),
     "MASTER_SWORD": new Item("Master Sword", Age.ADULT, [Abilities.ATTACK, Abilities.SLASH]),
@@ -60,11 +60,11 @@ define(["classes/item", "classes/song", "data/ages", "data/abilities", "data/loc
   Items.ADULTS_WALLET = new Item("Adult's Wallet", Age.ANY, [], {supers: [Items.GIANTS_WALLET]});
 
   // trade items
-  Items.BUNNY_HOOD = new Item("Bunny Hood", Age.CHILD, [], {next: Items.MASK_OF_TRUTH});
-  Items.SPOOKY_MASK = new Item("Spooky Mask", Age.CHILD, [], {next: Items.BUNNY_HOOD});
-  Items.SKULL_MASK = new Item("Skull Mask", Age.CHILD, [], {next: Items.SPOOKY_MASK});
-  Items.KEATON_MASK = new Item("Keaton Mask", Age.CHILD, [], {next: Items.SKULL_MASK});
-  Items.ZELDAS_LETTER = new Item("Zelda's Letter", Age.CHILD, [], {next: Items.KEATON_MASK});
+  Items.BUNNY_HOOD = new Item("Bunny Hood", Age.CHILD, [Abilities.ZLETTER], {next: Items.MASK_OF_TRUTH});
+  Items.SPOOKY_MASK = new Item("Spooky Mask", Age.CHILD, [Abilities.ZLETTER], {next: Items.BUNNY_HOOD});
+  Items.SKULL_MASK = new Item("Skull Mask", Age.CHILD, [Abilities.ZLETTER], {next: Items.SPOOKY_MASK});
+  Items.KEATON_MASK = new Item("Keaton Mask", Age.CHILD, [Abilities.ZLETTER], {next: Items.SKULL_MASK});
+  Items.ZELDAS_LETTER = new Item("Zelda's Letter", Age.CHILD, [Abilities.ZLETTER], {next: Items.KEATON_MASK});
   Items.CHICKEN = new Item("Chicken", Age.CHILD, [], {next: Items.ZELDAS_LETTER});
   Items.WEIRD_EGG = new Item("Weird Egg", Age.CHILD, [], {next: Items.CHICKEN});
   Items.EYE_DROPS = new Item("Eye Drops", Age.ADULT, [], {next: Items.CLAIM_CHECK});
@@ -77,7 +77,7 @@ define(["classes/item", "classes/song", "data/ages", "data/abilities", "data/loc
   Items.COJIRO = new Item("Cojiro", Age.ADULT, [], {next: Items.ODD_MUSHROOM});
   Items.POCKET_CUCCO = new Item("Pocket Cucco", Age.ADULT, [], {next: Items.COJIRO});
   Items.POCKET_EGG = new Item("Pocket Egg", Age.ADULT, [], {next: Items.POCKET_CUCCO});
-  
+
   // keys
   Items['SMALL_KEY_' + Locations.FOREST_TEMPLE] = new Item("Small Key (" + Locations.FOREST_TEMPLE + ")", Age.ANY, [], {count: 0, max: 5});
   Items['SMALL_KEY_' + Locations.FIRE_TEMPLE] = new Item("Small Key (" + Locations.FIRE_TEMPLE + ")", Age.ANY, [], {count: 0, max: 8});
