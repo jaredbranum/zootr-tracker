@@ -210,7 +210,7 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
     };
 
     this.refreshAccessible = function(){
-      this.saveInventory("zootr");
+      this.saveState();
       ItemChecks.forEach(function(check){
         var $elem = $('#' + toSlug(check.location) + '-' + toSlug(check.name)).closest('.item-check');
         if (check.available(this.inventory, this.currentAge())){
@@ -260,15 +260,27 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
       }
     }.bind(this);
 
-    this.loadInventory = function(key){
-      return (window.localStorage.getItem(key) || "")
+    this.saveState = function(){
+      var key = "zootr"; // FIXME
+      window.localStorage.setItem(
+        key + "/inventory",
+        this.inventory.items.map(x => x.key));
+      window.localStorage.setItem(
+        key + "/locations",
+        $(".item-check.collected [type=checkbox]").toArray().map(x => x.id));
+    }.bind(this);
+
+    this.loadState = function(){
+      var key = "zootr"; // FIXME
+      var saved_items = (window.localStorage.getItem(key + "/inventory") || "")
         .split(",")
         .filter(x => !!x)
         .map(x => Items[x]);
-    }.bind(this);
-
-    this.saveInventory = function(key){
-      window.localStorage.setItem(key, this.inventory.items.map(x => x.key));
+      var saved_locs = (window.localStorage.getItem(key + "/locations") || "")
+        .split(",")
+        .filter(x => !!x);
+      this.initializeItemIconsFrom(saved_items);
+      this.initializeLocationChecksFrom(saved_locs);
     }.bind(this);
 
     this.initializeItemIconsFrom = function(inv){
@@ -285,11 +297,19 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
         }
 
       }
-    }
+    }.bind(this);
+
+    this.initializeLocationChecksFrom = function(locs){
+      console.log("Loaded saved locations:", locs);
+      for (var n in locs) {
+        var loc = locs[n];
+        $('#' + loc).click();
+      }
+    }.bind(this);
 
     this.init = function(){
       this.inventory = new Inventory(
-        [], //this.loadInventory("zootr"),
+        [],
         [Locations.KOKIRI_FOREST, Locations.LOST_WOODS]);
       this.settings = {};
       $('.item').click(this.collect);
@@ -300,7 +320,7 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
       $('#settings input, #settings select').on('change', this.applySettings);
       $('#check-pedestal').submit(this.checkPedestal);
       $('#read-pedestal .pedestal-hint').click(this.recordPedestalHint);
-      this.initializeItemIconsFrom(this.loadInventory("zootr"));
+      this.loadState();
       this.applySettings();
     }.bind(this);
   };
