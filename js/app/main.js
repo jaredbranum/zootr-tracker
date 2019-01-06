@@ -12,23 +12,23 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
       locations.forEach(function(locationName){
         location = $('<div/>').addClass('location').attr('data-location', toKey(locationName));
         header = $('<h3/>').append($('<span/>').addClass('location-name').text(locationName));
-        if (Items['BIG_KEY_' + locationName] || Items['SMALL_KEY_' + locationName]){
+        if (Items['BIG_KEY_' + toKey(locationName)] || Items['SMALL_KEY_' + toKey(locationName)]){
           location.addClass('has-keys');
           region.addClass('has-keys');
           keys = $('<div/>').addClass('keys');
-          if (Items['BIG_KEY_' + locationName]){
+          if (Items['BIG_KEY_' + toKey(locationName)]){
             keys.append(
               $('<div/>').addClass('item').
-                attr('data-item', 'BIG_KEY_' + locationName).
-                attr('data-original-item', 'BIG_KEY_' + locationName).
+                attr('data-item', 'BIG_KEY_' + toKey(locationName)).
+                attr('data-original-item', 'BIG_KEY_' + toKey(locationName)).
                 append($('<img/>').attr('src', 'images/BIG_KEY.png'))
             );
           }
-          if (Items['SMALL_KEY_' + locationName]){
+          if (Items['SMALL_KEY_' + toKey(locationName)]){
             keys.append(
               $('<div/>').addClass('item').
-                attr('data-item', 'SMALL_KEY_' + locationName).
-                attr('data-original-item', 'SMALL_KEY_' + locationName).
+                attr('data-item', 'SMALL_KEY_' + toKey(locationName)).
+                attr('data-original-item', 'SMALL_KEY_' + toKey(locationName)).
                 append($('<img/>').attr('src', 'images/SMALL_KEY.png')).
                 append($('<span/>').addClass('count'))
             );

@@ -1,7 +1,7 @@
 define(["require", "data/ages"], function(require, Age){
   return function Item(name, age, abilities, more){
     this.name = name;
-    this.key = name.replace(/'/g, '').replace(/\s/g, '_').toUpperCase();
+    this.key = name.replace(/['()]/g, '').replace(/\s/g, '_').toUpperCase();
     this.basekey = this.key;
     this.age = age || Age.ANY
     this.abilities = abilities || [];

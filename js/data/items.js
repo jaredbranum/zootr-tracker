@@ -79,21 +79,21 @@ define(["classes/item", "classes/song", "data/ages", "data/abilities", "data/loc
   Items.POCKET_EGG = new Item("Pocket Egg", Age.ADULT, [], {next: Items.POCKET_CUCCO});
 
   // keys
-  Items['SMALL_KEY_' + Locations.FOREST_TEMPLE] = new Item("Small Key (" + Locations.FOREST_TEMPLE + ")", Age.ANY, [], {count: 0, max: 5});
-  Items['SMALL_KEY_' + Locations.FIRE_TEMPLE] = new Item("Small Key (" + Locations.FIRE_TEMPLE + ")", Age.ANY, [], {count: 0, max: 8});
-  Items['SMALL_KEY_' + Locations.WATER_TEMPLE] = new Item("Small Key (" + Locations.WATER_TEMPLE + ")", Age.ANY, [], {count: 0, max: 6});
-  Items['SMALL_KEY_' + Locations.SHADOW_TEMPLE] = new Item("Small Key (" + Locations.SHADOW_TEMPLE + ")", Age.ANY, [], {count: 0, max: 5});
-  Items['SMALL_KEY_' + Locations.SPIRIT_TEMPLE] = new Item("Small Key (" + Locations.SPIRIT_TEMPLE + ")", Age.ANY, [], {count: 0, max: 5});
-  Items['SMALL_KEY_' + Locations.BOTTOM_OF_THE_WELL] = new Item("Small Key (" + Locations.BOTTOM_OF_THE_WELL + ")", Age.ANY, [], {count: 0, max: 3});
-  Items['SMALL_KEY_' + Locations.GERUDO_FORTRESS] = new Item("Small Key (" + Locations.GERUDO_FORTRESS + ")", Age.ANY, [], {count: 0, max: 4});
-  Items['SMALL_KEY_' + Locations.GERUDO_TRAINING_GROUNDS] = new Item("Small Key (" + Locations.GERUDO_TRAINING_GROUNDS + ")", Age.ANY, [], {count: 0, max: 9});
-  Items['SMALL_KEY_' + Locations.INSIDE_GANONS_CASTLE] = new Item("Small Key (" + Locations.INSIDE_GANONS_CASTLE + ")", Age.ANY, [], {count: 0, max: 2});
-  Items['BIG_KEY_' + Locations.FOREST_TEMPLE] = new Item("Big Key (" + Locations.FOREST_TEMPLE + ")");
-  Items['BIG_KEY_' + Locations.FIRE_TEMPLE] = new Item("Big Key (" + Locations.FIRE_TEMPLE + ")");
-  Items['BIG_KEY_' + Locations.WATER_TEMPLE] = new Item("Big Key (" + Locations.WATER_TEMPLE + ")");
-  Items['BIG_KEY_' + Locations.SHADOW_TEMPLE] = new Item("Big Key (" + Locations.SHADOW_TEMPLE + ")");
-  Items['BIG_KEY_' + Locations.SPIRIT_TEMPLE] = new Item("Big Key (" + Locations.SPIRIT_TEMPLE + ")");
-  Items['BIG_KEY_' + Locations.INSIDE_GANONS_CASTLE] = new Item("Big Key (" + Locations.INSIDE_GANONS_CASTLE + ")");
+  Items['SMALL_KEY_FOREST_TEMPLE'] = new Item("Small Key (" + Locations.FOREST_TEMPLE + ")", Age.ANY, [], {count: 0, max: 5});
+  Items['SMALL_KEY_FIRE_TEMPLE'] = new Item("Small Key (" + Locations.FIRE_TEMPLE + ")", Age.ANY, [], {count: 0, max: 8});
+  Items['SMALL_KEY_WATER_TEMPLE'] = new Item("Small Key (" + Locations.WATER_TEMPLE + ")", Age.ANY, [], {count: 0, max: 6});
+  Items['SMALL_KEY_SHADOW_TEMPLE'] = new Item("Small Key (" + Locations.SHADOW_TEMPLE + ")", Age.ANY, [], {count: 0, max: 5});
+  Items['SMALL_KEY_SPIRIT_TEMPLE'] = new Item("Small Key (" + Locations.SPIRIT_TEMPLE + ")", Age.ANY, [], {count: 0, max: 5});
+  Items['SMALL_KEY_BOTTOM_OF_THE_WELL'] = new Item("Small Key (" + Locations.BOTTOM_OF_THE_WELL + ")", Age.ANY, [], {count: 0, max: 3});
+  Items['SMALL_KEY_GERUDO_FORTRESS'] = new Item("Small Key (" + Locations.GERUDO_FORTRESS + ")", Age.ANY, [], {count: 0, max: 4});
+  Items['SMALL_KEY_GERUDO_TRAINING_GROUNDS'] = new Item("Small Key (" + Locations.GERUDO_TRAINING_GROUNDS + ")", Age.ANY, [], {count: 0, max: 9});
+  Items['SMALL_KEY_INSIDE_GANONS_CASTLE'] = new Item("Small Key (" + Locations.INSIDE_GANONS_CASTLE + ")", Age.ANY, [], {count: 0, max: 2});
+  Items['BIG_KEY_FOREST_TEMPLE'] = new Item("Big Key (" + Locations.FOREST_TEMPLE + ")");
+  Items['BIG_KEY_FIRE_TEMPLE'] = new Item("Big Key (" + Locations.FIRE_TEMPLE + ")");
+  Items['BIG_KEY_WATER_TEMPLE'] = new Item("Big Key (" + Locations.WATER_TEMPLE + ")");
+  Items['BIG_KEY_SHADOW_TEMPLE'] = new Item("Big Key (" + Locations.SHADOW_TEMPLE + ")");
+  Items['BIG_KEY_SPIRIT_TEMPLE'] = new Item("Big Key (" + Locations.SPIRIT_TEMPLE + ")");
+  Items['BIG_KEY_INSIDE_GANONS_CASTLE'] = new Item("Big Key (" + Locations.INSIDE_GANONS_CASTLE + ")");
 
   return Items;
 });
