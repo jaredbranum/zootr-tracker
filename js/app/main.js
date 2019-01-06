@@ -268,6 +268,14 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
       window.localStorage.setItem(
         key + "/locations",
         $(".item-check.collected [type=checkbox]").toArray().map(x => x.id));
+      // A bit gross, since some settings are dropdowns and others are checkboxes
+      // and serializeArray only does the right thing on the former.
+      // Saves dropdown settings as NAME=VALUE and checkbox settings as either
+      // NAME or !NAME.
+      window.localStorage.setItem(
+        key + "/settings",
+        $("#settings select").serializeArray().map(x => x.name + "=" + x.value)
+          .concat($("#settings input[type=checkbox]").toArray().map(x => (x.checked ? "" : "!") + x.name)))
     }.bind(this);
 
     this.loadState = function(){
@@ -279,8 +287,12 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
       var saved_locs = (window.localStorage.getItem(key + "/locations") || "")
         .split(",")
         .filter(x => !!x);
+      var saved_settings = (window.localStorage.getItem(key + "/settings") || "")
+        .split(",")
+        .filter(x => !!x);
       this.initializeItemIconsFrom(saved_items);
       this.initializeLocationChecksFrom(saved_locs);
+      this.initializeSettingsFrom(saved_settings);
     }.bind(this);
 
     this.initializeItemIconsFrom = function(inv){
@@ -307,6 +319,24 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
       }
     }.bind(this);
 
+    this.initializeSettingsFrom = function(sets){
+      console.log("Loaded saved settings:", sets);
+      for (var n in sets) {
+        var setting = sets[n];
+        if (setting.indexOf('=') > -1) {
+          // Selector
+          var kv = setting.split('=');
+          $('#settings [name=' + kv[0] + ']')[0].value = kv[1];
+        } else if (setting.indexOf('!') == 0) {
+          // Unset checkbox.
+          $('#settings [name=' + setting.substr(1) + ']')[0].checked = false;
+        } else {
+          // Set checkbox.
+          $('#settings [name=' + setting + ']')[0].checked = true;
+        }
+      }
+    }.bind(this);
+
     this.init = function(){
       this.inventory = new Inventory(
         [],
@@ -315,12 +345,12 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
       $('.item').click(this.collect);
       $('.item').contextmenu(this.uncollect);
       $('.item-check [type="checkbox"]').on('change', this.check);
+      this.loadState();
       $('#age-selector input').on('change', this.refreshAccessible);
       $('#age-selector').on('change', this.changeAge);
       $('#settings input, #settings select').on('change', this.applySettings);
       $('#check-pedestal').submit(this.checkPedestal);
       $('#read-pedestal .pedestal-hint').click(this.recordPedestalHint);
-      this.loadState();
       this.applySettings();
     }.bind(this);
   };
