@@ -264,7 +264,7 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
       var key = window.location.hash || "";
       window.localStorage.setItem(
         key + "/inventory",
-        this.inventory.items.map(x => x.key));
+        this.inventory.items.map(x => x.key + (typeof x.count === 'number' ? ('='+x.count) : '')));
       window.localStorage.setItem(
         key + "/locations",
         $(".item-check.collected [type=checkbox]").toArray().map(x => x.id));
@@ -282,8 +282,7 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
       var key = window.location.hash || "";
       var saved_items = (window.localStorage.getItem(key + "/inventory") || "")
         .split(",")
-        .filter(x => !!x)
-        .map(x => Items[x]);
+        .filter(x => !!x);
       var saved_locs = (window.localStorage.getItem(key + "/locations") || "")
         .split(",")
         .filter(x => !!x);
@@ -296,9 +295,20 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
     }.bind(this);
 
     this.initializeItemIconsFrom = function(inv){
-      console.log("Restoring saved items:", inv.map(x => x.name));
+      console.log("Restoring saved items:", inv);
       for (var n in inv) {
-        var item = inv[n];
+        var item_id = inv[n];
+        var item;
+        if (item_id.indexOf('=') > -1) {
+          // Saved item has an associated count
+          item_id = item_id.split('=');
+          item = Items[item_id[0]];
+          // We subtract 1 here because when we do a simulated click on it it'll
+          // add 1 to the count, ick.
+          item.count = parseInt(item_id[1]-1);
+        } else {
+          item = Items[item_id];
+        }
         var button = $('.item[data-original-item=' + item.basekey + ']');
         // This is super gross.
         // The item checkboxes don't use any sort of reactive UI, so to make
