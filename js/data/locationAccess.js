@@ -178,7 +178,10 @@ define(["data/locations", "data/itemsAndSongs", "data/abilities", "data/ages", "
     {locations: [Locations.GANONS_CASTLE]},
     {locations: [Locations.HYRULE_FIELD]}
   ];
-  access[Age.ADULT][Locations.TEMPLE_OF_TIME] = [{}];
+  access[Age.ADULT][Locations.TEMPLE_OF_TIME] = [
+    {items: [Items.MASTER_SWORD]},
+    {locations: [Locations.HYRULE_MARKET]}
+  ];
   access[Age.ADULT][Locations.LON_LON_RANCH] = [
     {locations: [Locations.HYRULE_FIELD]}
   ];
