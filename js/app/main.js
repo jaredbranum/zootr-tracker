@@ -296,7 +296,7 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
     }.bind(this);
 
     this.initializeItemIconsFrom = function(inv){
-      console.log("Loaded saved items:", inv.map(x => x.name));
+      console.log("Restoring saved items:", inv.map(x => x.name));
       for (var n in inv) {
         var item = inv[n];
         var button = $('.item[data-original-item=' + item.basekey + ']');
@@ -304,15 +304,20 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
         // The item checkboxes don't use any sort of reactive UI, so to make
         // sure the display and data layers stay in sync we instead simulate
         // clicks on each one.
-        while (!button.hasClass("collected") || button[0].getAttribute("data-item") != item.key) {
+        button.click();
+        while (button.hasClass("collected") && button[0].getAttribute("data-item") != item.key) {
           button.click();
         }
-
+        if (!button.hasClass("collected")) {
+          console.log("WARNING: restoring item " + item.key
+            + ": I tried all possible settings of button " + item.basekey
+            + " but none of them showed the right item; giving up.");
+        }
       }
     }.bind(this);
 
     this.initializeLocationChecksFrom = function(locs){
-      console.log("Loaded saved locations:", locs);
+      console.log("Restoring saved locations:", locs);
       for (var n in locs) {
         var loc = locs[n];
         $('#' + loc).click();
@@ -320,7 +325,7 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
     }.bind(this);
 
     this.initializeSettingsFrom = function(sets){
-      console.log("Loaded saved settings:", sets);
+      console.log("Restoring saved settings:", sets);
       for (var n in sets) {
         var setting = sets[n];
         if (setting.indexOf('=') > -1) {
