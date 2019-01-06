@@ -22,7 +22,7 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
                 attr('data-item', 'BIG_KEY_' + locationName).
                 attr('data-original-item', 'BIG_KEY_' + locationName).
                 append($('<img/>').attr('src', 'images/BIG_KEY.png'))
-            );  
+            );
           }
           if (Items['SMALL_KEY_' + locationName]){
             keys.append(
@@ -210,6 +210,7 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
     };
 
     this.refreshAccessible = function(){
+      this.saveInventory("zootr");
       ItemChecks.forEach(function(check){
         var $elem = $('#' + toSlug(check.location) + '-' + toSlug(check.name)).closest('.item-check');
         if (check.available(this.inventory, this.currentAge())){
@@ -259,8 +260,37 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
       }
     }.bind(this);
 
+    this.loadInventory = function(key){
+      return (window.localStorage.getItem(key) || "")
+        .split(",")
+        .filter(x => !!x)
+        .map(x => Items[x]);
+    }.bind(this);
+
+    this.saveInventory = function(key){
+      window.localStorage.setItem(key, this.inventory.items.map(x => x.key));
+    }.bind(this);
+
+    this.initializeItemIconsFrom = function(inv){
+      console.log("Loaded saved items:", inv.map(x => x.name));
+      for (var n in inv) {
+        var item = inv[n];
+        var button = $('.item[data-original-item=' + item.basekey + ']');
+        // This is super gross.
+        // The item checkboxes don't use any sort of reactive UI, so to make
+        // sure the display and data layers stay in sync we instead simulate
+        // clicks on each one.
+        while (!button.hasClass("collected") || button[0].getAttribute("data-item") != item.key) {
+          button.click();
+        }
+
+      }
+    }
+
     this.init = function(){
-      this.inventory = new Inventory([], [Locations.KOKIRI_FOREST, Locations.LOST_WOODS]);
+      this.inventory = new Inventory(
+        [], //this.loadInventory("zootr"),
+        [Locations.KOKIRI_FOREST, Locations.LOST_WOODS]);
       this.settings = {};
       $('.item').click(this.collect);
       $('.item').contextmenu(this.uncollect);
@@ -270,6 +300,7 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
       $('#settings input, #settings select').on('change', this.applySettings);
       $('#check-pedestal').submit(this.checkPedestal);
       $('#read-pedestal .pedestal-hint').click(this.recordPedestalHint);
+      this.initializeItemIconsFrom(this.loadInventory("zootr"));
       this.applySettings();
     }.bind(this);
   };
