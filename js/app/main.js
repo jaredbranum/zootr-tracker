@@ -261,7 +261,7 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
     }.bind(this);
 
     this.saveState = function(){
-      var key = "zootr"; // FIXME
+      var key = window.location.hash || "";
       window.localStorage.setItem(
         key + "/inventory",
         this.inventory.items.map(x => x.key));
@@ -279,7 +279,7 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
     }.bind(this);
 
     this.loadState = function(){
-      var key = "zootr"; // FIXME
+      var key = window.location.hash || "";
       var saved_items = (window.localStorage.getItem(key + "/inventory") || "")
         .split(",")
         .filter(x => !!x)
