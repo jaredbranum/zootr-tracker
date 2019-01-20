@@ -159,7 +159,7 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
     new ItemCheck("Redead Grave", Locations.GRAVEYARD, [{items: [Items.SUNS_SONG]}]),
     new ItemCheck("Royal Tomb Torches", Locations.GRAVEYARD, [
       {items: [Items.ZELDAS_LULLABY], abilities: [Abilities.BURN]},
-      {age: Age.CHILD, items: [Items.ZELDAS_LULLABY, Items.DEKU_STICK], glitches: true}
+      {age: Age.CHILD, items: [Items.ZELDAS_LULLABY, Items.DEKU_STICK], offLogic: true}
     ]),
     new ItemCheck("Sun's Song", Locations.GRAVEYARD, [{items: [Items.ZELDAS_LULLABY]}]),
     new ItemCheck("High Crate", Locations.GRAVEYARD, [
@@ -306,8 +306,8 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {age: Age.CHILD},
       {age: Age.ADULT, items: [Items.LONGSHOT]},
       {age: Age.ADULT, items: [Items.EPONAS_SONG]},
-      {age: Age.ADULT, items: [Items.HOOKSHOT], offLogic: true},
       {age: Age.ADULT, items: [Items.REQUIEM_OF_SPIRIT], offLogic: true},
+      {age: Age.ADULT, items: [Items.HOOKSHOT], glitches: true},
       {age: Age.ADULT, abilities: [Abilities.SHIELD, Abilities.BOMB], glitches: true},
       {age: Age.ADULT, items: [Items.HOVER_BOOTS], abilities: [Abilities.SHIELD, Abilities.SLASH], glitches: true},
       {age: Age.ADULT, items: [Items.HOVER_BOOTS, Items.MEGATON_HAMMER], glitches: true},
@@ -316,8 +316,8 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
     new ItemCheck("Hammer Chest", Locations.GERUDO_VALLEY, [
       {age: Age.ADULT, items: [Items.LONGSHOT, Items.MEGATON_HAMMER]},
       {age: Age.ADULT, items: [Items.EPONAS_SONG, Items.MEGATON_HAMMER]},
-      {age: Age.ADULT, items: [Items.HOOKSHOT, Items.MEGATON_HAMMER], offLogic: true},
       {age: Age.ADULT, items: [Items.REQUIEM_OF_SPIRIT, Items.MEGATON_HAMMER], offLogic: true},
+      {age: Age.ADULT, items: [Items.HOOKSHOT, Items.MEGATON_HAMMER], glitches: true},
       {age: Age.ADULT, abilities: [Abilities.SHIELD, Abilities.BOMB], glitches: true},
       {age: Age.ADULT, items: [Items.HOVER_BOOTS, Items.MEGATON_HAMMER], glitches: true},
     ]),
@@ -658,11 +658,13 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
     ]),
     new ItemCheck("Falling Spikes High 1", Locations.SHADOW_TEMPLE, [
       {items: [Items.HOVER_BOOTS], abilities: [Abilities.STRENGTH]},
+      {items: [Items.HOVER_BOOTS], offLogic: true},
       {items: [Items.HYLIAN_SHIELD], abilities: [Abilities.BOMB, Abilities.STRENGTH], glitches: true},
       {items: [Items.MIRROR_SHIELD], abilities: [Abilities.BOMB, Abilities.STRENGTH], glitches: true}
     ]),
     new ItemCheck("Falling Spikes High 2", Locations.SHADOW_TEMPLE, [
       {items: [Items.HOVER_BOOTS], abilities: [Abilities.STRENGTH]},
+      {items: [Items.HOVER_BOOTS], offLogic: true},
       {items: [Items.HYLIAN_SHIELD], abilities: [Abilities.BOMB, Abilities.STRENGTH], glitches: true},
       {items: [Items.MIRROR_SHIELD], abilities: [Abilities.BOMB, Abilities.STRENGTH], glitches: true}
     ]),

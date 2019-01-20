@@ -245,3 +245,8 @@ ul.item-checks li input[type=checkbox]:checked + label {
   display: block;
   margin: 10px auto;
 }
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}

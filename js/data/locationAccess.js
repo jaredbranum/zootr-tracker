@@ -243,7 +243,6 @@ define(["data/locations", "data/itemsAndSongs", "data/abilities", "data/ages", "
     {locations: [Locations.GERUDO_VALLEY], items: [Items.EPONAS_SONG]},
     {locations: [Locations.GERUDO_VALLEY], items: [Items.LONGSHOT]},
     // precise hookshot
-    {locations: [Locations.GERUDO_VALLEY], settings: {RULES: 'ACCESSIBLE'}, items: [Items.HOOKSHOT]},
     {locations: [Locations.GERUDO_VALLEY], settings: {RULES: 'NO_MAJOR_GLITCHES'}, items: [Items.HOOKSHOT]},
     // megaflip
     {locations: [Locations.GERUDO_VALLEY], settings: {RULES: 'NO_MAJOR_GLITCHES'}, items: [Items.HYLIAN_SHIELD], abilities: [Abilities.BOMB]},

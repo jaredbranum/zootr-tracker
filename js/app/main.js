@@ -247,7 +247,7 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
       button.prop('disabled', true);
 
       dungeonItems[Age.CHILD] = ['KOKIRI_EMERALD','GORONS_RUBY','ZORAS_SAPPHIRE'];
-      dungeonItems[Age.ADULT] = ['FOREST_MEDALLION','FIRE_MEDALLION','WATER_MEDALLION','SHADOW_MEDALLION','SPIRIT_MEDALLION','LIGHT_MEDALLION'];
+      dungeonItems[Age.ADULT] = ['LIGHT_MEDALLION','FOREST_MEDALLION','FIRE_MEDALLION','WATER_MEDALLION','SHADOW_MEDALLION','SPIRIT_MEDALLION'];
 
       if ((this.pedestalHints.length == 3 && this.currentAge() == Age.CHILD) || this.pedestalHints.length == 6 && this.currentAge() == Age.ADULT){
         for (var i = 0; i < this.pedestalHints.length; i++){
