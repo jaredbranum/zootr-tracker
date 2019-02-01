@@ -195,6 +195,7 @@ define(["data/locations", "data/itemsAndSongs", "data/abilities", "data/ages", "
   access[Age.ADULT][Locations.DEATH_MOUNTAIN_TRAIL] = [
     {locations: [Locations.KAKARIKO_VILLAGE]},
     {locations: [Locations.DEATH_MOUNTAIN_CRATER], items: [Items.HOOKSHOT]},
+    {locations: [Locations.DEATH_MOUNTAIN_CRATER], items: [Items.HOVER_BOOTS]},
     {locations: [Locations.DODONGOS_CAVERN]},
     {locations: [Locations.GORON_CITY]}
   ];

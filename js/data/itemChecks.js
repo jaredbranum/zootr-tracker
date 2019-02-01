@@ -281,7 +281,7 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
     new ItemCheck("Iceberg Heart", Locations.ZORAS_FOUNTAIN, [{age: Age.ADULT}]),
     new ItemCheck("Underwater Heart", Locations.ZORAS_FOUNTAIN, [{age: Age.ADULT, items: [Items.IRON_BOOTS]}]),
     // Lake Hylia
-    new ItemCheck("Fishing (Child)", Locations.LAKE_HYLIA, [{age: Age.CHILD, items: [Items.KOKIRI_SWORD]}]),
+    new ItemCheck("Fishing (Child)", Locations.LAKE_HYLIA, [{age: Age.CHILD}]),
     new ItemCheck("Ruto's Letter", Locations.LAKE_HYLIA, [{age: Age.CHILD, items: [Items.SILVER_SCALE]}]),
     new ItemCheck("Fishing (Adult)", Locations.LAKE_HYLIA, [
       {age: Age.ADULT, items: [Items.MAGIC_BEANS]},
