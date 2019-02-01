@@ -253,10 +253,26 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
         for (var i = 0; i < this.pedestalHints.length; i++){
           $('.item[data-item=' + dungeonItems[this.currentAge()][i] + '] .subtitle').text(this.pedestalHints[i]);
         }
+        if (this.currentAge() == Age.ADULT) this.labelStones();
         this.pedestalHints = [];
         hidePopup();
         $('.pedestal-hint').prop('disabled', false);
       }
+    }.bind(this);
+
+    this.labelStones = function(){
+      // put collected stones first
+      $('.item.stone').sort(function(a, b){
+        return Math.abs([
+          ($(a).hasClass('collected') && !$(b).hasClass('collected')),
+          (($(a).hasClass('collected') && $(b).hasClass('collected')) || (!$(a).hasClass('collected') && !$(b).hasClass('collected'))),
+          (!$(a).hasClass('collected') && $(b).hasClass('collected'))
+        ].indexOf(true)) - 1;
+      }).each(function(i, elem){
+        if (!$(elem).find('.subtitle').text()){
+          $(elem).find('.subtitle').text($('.pedestal-hint:not(:disabled)')[i].value)
+        }
+      });
     }.bind(this);
 
     this.init = function(){
