@@ -50,6 +50,12 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
           $('<input type="checkbox"/>').attr('id', toSlug(check.location) + '-' +toSlug(check.name))
         ).append(
           $('<label />').text(check.name).attr('for', toSlug(check.location) + '-' +toSlug(check.name))
+        ).append(
+          $('<span />').addClass('peek-controls').append(
+            $('<span />').text('(?)').addClass('unseen')
+          ).append(
+            $('<img />').addClass('peek-item').addClass('seen')
+          )
         )
       );
       itemChecksByLocation[check.location] = itemChecksByLocation[check.location] || {};
@@ -77,9 +83,25 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
     });
   };
 
+  var setupPopups = function(){
+    $(document).on('keydown', function(e){
+      if (e.which == 27){ // ESC key
+        hidePopup();
+      }
+    });
+    $('#overlay').click(function(e){
+      if ($(e.target).closest('.popup').length){
+        return false;
+      }
+      hidePopup();
+    });
+  };
+
   var showPopup = function(selector){
-    $(selector).show();
+    var popup = $(selector);
+    popup.show();
     $('#overlay').show();
+    return popup;
   }
 
   var hidePopup = function(){
@@ -164,6 +186,22 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
       this.refreshAccessible();
     }.bind(this);
 
+    this.peek = function(e){
+      var popup = showPopup('#peek-item-popup');
+      var check = $(e.target).closest('.item-check');
+      popup.find('.peek-check-name').text(check.attr('data-check'));
+      popup.find('#peek-item').attr('data-check', check.attr('data-check')).attr('data-location', check.closest('.location').attr('data-location'));
+    }.bind(this);
+
+    this.recordPeek = function(e){
+      var src = $(e.target).closest('.peek-item').find('img').attr('src');
+      var form = $('#peek-item');
+      var peekControls = $('.location[data-location='+form.attr('data-location')+']').find('.item-check[data-check="'+form.attr('data-check')+'"]').find('.peek-controls');
+      peekControls.find('img').attr('src', src).show();
+      peekControls.find('.unseen').hide();
+      hidePopup();
+    }.bind(this);
+
     this.changeAge = function(){
       $('.collected').addClass('no-animation');
       this.inventory.age = this.currentAge();
@@ -217,6 +255,11 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
         } else {
           $elem.addClass('inaccessible');
         }
+        if (check.peekable(this.inventory, this.currentAge())){
+          $elem.addClass('peekable');
+        } else {
+          $elem.removeClass('peekable');
+        }
       }.bind(this));
       ['.location', '.region'].forEach(function(selector){
         $(selector).each(function(){
@@ -229,6 +272,11 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
             $(this).removeClass('collected');
           } else {
             $(this).addClass('collected');
+          }
+          if ($(this).find('.item-check.peekable').length){
+            $(this).addClass('peekable');
+          } else {
+            $(this).removeClass('peekable');
           }
         });
       });
@@ -281,16 +329,20 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
       $('.item').click(this.collect);
       $('.item').contextmenu(this.uncollect);
       $('.item-check [type="checkbox"]').on('change', this.check);
+      $('.peek-controls').click(this.peek);
+      $('.peek-item').click(this.recordPeek);
       $('#age-selector input').on('change', this.refreshAccessible);
       $('#age-selector').on('change', this.changeAge);
       $('#settings input, #settings select').on('change', this.applySettings);
       $('#check-pedestal').submit(this.checkPedestal);
       $('#read-pedestal .pedestal-hint').click(this.recordPedestalHint);
+
       this.applySettings();
     }.bind(this);
   };
 
   $(function(){
+    setupPopups();
     generateLocationList($('#locations .locations'), Regions);
     generateChecklist(ItemChecks);
     generateSettingsList($('#settings table'), Settings);

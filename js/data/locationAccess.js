@@ -203,7 +203,9 @@ define(["data/locations", "data/itemsAndSongs", "data/abilities", "data/ages", "
     {items: [Items.BOLERO_OF_FIRE]},
     {locations: [Locations.DEATH_MOUNTAIN_TRAIL], abilities: [Abilities.BLAST]},
     {locations: [Locations.FIRE_TEMPLE]},
-    {locations: [Locations.GORON_CITY], abilities: [Abilities.BOMB]}
+    {locations: [Locations.GORON_CITY], abilities: [Abilities.BOMB]},
+    {locations: [Locations.GORON_CITY], abilities: [Abilities.IGNITE]},
+    {locations: [Locations.GORON_CITY], abilities: [Abilities.STRENGTH]}
   ];
   access[Age.ADULT][Locations.GORON_CITY] = [
     {locations: [Locations.DEATH_MOUNTAIN_TRAIL]},
