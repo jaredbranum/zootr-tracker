@@ -1,7 +1,8 @@
 define(["require", "data/ages"], function(require, Age){
   return function Item(name, age, abilities, more){
     this.name = name;
-    this.key = name.replace(/'/g, '').replace(/\s/g, '_').toUpperCase();
+    this.key = name.replace(/['()]/g, '').replace(/\s/g, '_').toUpperCase();
+    this.basekey = this.key;
     this.age = age || Age.ANY
     this.abilities = abilities || [];
     if (more && typeof more === "object"){
@@ -14,6 +15,12 @@ define(["require", "data/ages"], function(require, Age){
     this.supers = this.supers || [];
     this.requirements = this.requirements || [];
     this.next = this.next || this.supers[0];
+
+    var next = this.next;
+    while (next) {
+      next.basekey = this.basekey;
+      next = next.next;
+    }
 
     this.prev = function(){
       if (this.parent) return this.parent;

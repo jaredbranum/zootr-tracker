@@ -12,23 +12,23 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
       locations.forEach(function(locationName){
         location = $('<div/>').addClass('location').attr('data-location', toKey(locationName));
         header = $('<h3/>').append($('<span/>').addClass('location-name').text(locationName));
-        if (Items['BIG_KEY_' + locationName] || Items['SMALL_KEY_' + locationName]){
+        if (Items['BIG_KEY_' + toKey(locationName)] || Items['SMALL_KEY_' + toKey(locationName)]){
           location.addClass('has-keys');
           region.addClass('has-keys');
           keys = $('<div/>').addClass('keys');
-          if (Items['BIG_KEY_' + locationName]){
+          if (Items['BIG_KEY_' + toKey(locationName)]){
             keys.append(
               $('<div/>').addClass('item').
-                attr('data-item', 'BIG_KEY_' + locationName).
-                attr('data-original-item', 'BIG_KEY_' + locationName).
+                attr('data-item', 'BIG_KEY_' + toKey(locationName)).
+                attr('data-original-item', 'BIG_KEY_' + toKey(locationName)).
                 append($('<img/>').attr('src', 'images/BIG_KEY.png'))
-            );  
+            );
           }
-          if (Items['SMALL_KEY_' + locationName]){
+          if (Items['SMALL_KEY_' + toKey(locationName)]){
             keys.append(
               $('<div/>').addClass('item').
-                attr('data-item', 'SMALL_KEY_' + locationName).
-                attr('data-original-item', 'SMALL_KEY_' + locationName).
+                attr('data-item', 'SMALL_KEY_' + toKey(locationName)).
+                attr('data-original-item', 'SMALL_KEY_' + toKey(locationName)).
                 append($('<img/>').attr('src', 'images/SMALL_KEY.png')).
                 append($('<span/>').addClass('count'))
             );
@@ -248,6 +248,7 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
     };
 
     this.refreshAccessible = function(){
+      this.saveState();
       ItemChecks.forEach(function(check){
         var $elem = $('#' + toSlug(check.location) + '-' + toSlug(check.name)).closest('.item-check');
         if (check.available(this.inventory, this.currentAge())){
@@ -308,6 +309,100 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
       }
     }.bind(this);
 
+    // begin state saving code
+    this.saveState = function(){
+      var key = window.location.hash || "";
+      window.localStorage.setItem(
+        key + "/inventory",
+        this.inventory.items.map(x => x.key + (typeof x.count === 'number' ? ('='+x.count) : '')));
+      window.localStorage.setItem(
+        key + "/locations",
+        $(".item-check.collected [type=checkbox]").toArray().map(x => x.id));
+      // A bit gross, since some settings are dropdowns and others are checkboxes
+      // and serializeArray only does the right thing on the former.
+      // Saves dropdown settings as NAME=VALUE and checkbox settings as either
+      // NAME or !NAME.
+      window.localStorage.setItem(
+        key + "/settings",
+        $("#settings select").serializeArray().map(x => x.name + "=" + x.value)
+          .concat($("#settings input[type=checkbox]").toArray().map(x => (x.checked ? "" : "!") + x.name)))
+    }.bind(this);
+
+    this.loadState = function(){
+      var key = window.location.hash || "";
+      var saved_items = (window.localStorage.getItem(key + "/inventory") || "")
+        .split(",")
+        .filter(x => !!x);
+      var saved_locs = (window.localStorage.getItem(key + "/locations") || "")
+        .split(",")
+        .filter(x => !!x);
+      var saved_settings = (window.localStorage.getItem(key + "/settings") || "")
+        .split(",")
+        .filter(x => !!x);
+      this.initializeItemIconsFrom(saved_items);
+      this.initializeLocationChecksFrom(saved_locs);
+      this.initializeSettingsFrom(saved_settings);
+    }.bind(this);
+
+    this.initializeItemIconsFrom = function(inv){
+      console.log("Restoring saved items:", inv);
+      for (var n in inv) {
+        var item_id = inv[n];
+        var item;
+        if (item_id.indexOf('=') > -1) {
+          // Saved item has an associated count
+          item_id = item_id.split('=');
+          item = Items[item_id[0]];
+          // We subtract 1 here because when we do a simulated click on it it'll
+          // add 1 to the count, ick.
+          item.count = parseInt(item_id[1]-1);
+        } else {
+          item = Items[item_id];
+        }
+        var button = $('.item[data-original-item=' + item.basekey + ']');
+        // This is super gross.
+        // The item checkboxes don't use any sort of reactive UI, so to make
+        // sure the display and data layers stay in sync we instead simulate
+        // clicks on each one.
+        button.click();
+        while (button.hasClass("collected") && button[0].getAttribute("data-item") != item.key) {
+          button.click();
+        }
+        if (!button.hasClass("collected")) {
+          console.log("WARNING: restoring item " + item.key
+            + ": I tried all possible settings of button " + item.basekey
+            + " but none of them showed the right item; giving up.");
+        }
+      }
+    }.bind(this);
+
+    this.initializeLocationChecksFrom = function(locs){
+      console.log("Restoring saved locations:", locs);
+      for (var n in locs) {
+        var loc = locs[n];
+        $('#' + loc).click();
+      }
+    }.bind(this);
+
+    this.initializeSettingsFrom = function(sets){
+      console.log("Restoring saved settings:", sets);
+      for (var n in sets) {
+        var setting = sets[n];
+        if (setting.indexOf('=') > -1) {
+          // Selector
+          var kv = setting.split('=');
+          $('#settings [name=' + kv[0] + ']')[0].value = kv[1];
+        } else if (setting.indexOf('!') == 0) {
+          // Unset checkbox.
+          $('#settings [name=' + setting.substr(1) + ']')[0].checked = false;
+        } else {
+          // Set checkbox.
+          $('#settings [name=' + setting + ']')[0].checked = true;
+        }
+      }
+    }.bind(this);
+    // end state saving code
+
     this.labelStones = function(){
       // put collected stones first
       $('.item.stone').sort(function(a, b){
@@ -324,11 +419,14 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
     }.bind(this);
 
     this.init = function(){
-      this.inventory = new Inventory([], [Locations.KOKIRI_FOREST, Locations.LOST_WOODS]);
+      this.inventory = new Inventory(
+        [],
+        [Locations.KOKIRI_FOREST, Locations.LOST_WOODS]);
       this.settings = {};
       $('.item').click(this.collect);
       $('.item').contextmenu(this.uncollect);
       $('.item-check [type="checkbox"]').on('change', this.check);
+      this.loadState();
       $('.peek-controls').click(this.peek);
       $('.peek-item').click(this.recordPeek);
       $('#age-selector input').on('change', this.refreshAccessible);

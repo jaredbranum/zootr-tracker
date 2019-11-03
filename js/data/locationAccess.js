@@ -55,7 +55,8 @@ define(["data/locations", "data/itemsAndSongs", "data/abilities", "data/ages", "
     {locations: [Locations.SHADOW_TEMPLE]}
   ];
   access[Age.CHILD][Locations.DEATH_MOUNTAIN_TRAIL] = [
-    {locations: [Locations.KAKARIKO_VILLAGE]},
+    {locations: [Locations.KAKARIKO_VILLAGE], abilities: [Abilities.ZLETTER]},
+    {locations: [Locations.KAKARIKO_VILLAGE], settings: {DEATH_MOUNTAIN_TRAIL: 'OPEN'}},
     // {locations: [Locations.DEATH_MOUNTAIN_CRATER]},
     {locations: [Locations.DODONGOS_CAVERN]},
     {locations: [Locations.GORON_CITY]}
@@ -177,7 +178,10 @@ define(["data/locations", "data/itemsAndSongs", "data/abilities", "data/ages", "
     {locations: [Locations.GANONS_CASTLE]},
     {locations: [Locations.HYRULE_FIELD]}
   ];
-  access[Age.ADULT][Locations.TEMPLE_OF_TIME] = [{}];
+  access[Age.ADULT][Locations.TEMPLE_OF_TIME] = [
+    {items: [Items.MASTER_SWORD]},
+    {locations: [Locations.HYRULE_MARKET]}
+  ];
   access[Age.ADULT][Locations.LON_LON_RANCH] = [
     {locations: [Locations.HYRULE_FIELD]}
   ];

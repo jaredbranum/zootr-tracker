@@ -14,7 +14,7 @@ define(["classes/item", "classes/song", "data/ages", "data/abilities", "data/loc
     "BOTTLE": new Item("Bottle", Age.ANY, [Abilities.BOTTLE], {count: 0, max: 4}),
     "RUTOS_LETTER": new Item("Ruto's Letter", Age.ANY, [Abilities.BOTTLE]),
     "BLUE_FIRE": new Item("Blue Fire", Age.ANY, [Abilities.CRUMBLE, Abilities.BOTTLE, Abilities.IGNITE]),
-    "MASK_OF_TRUTH": new Item("Mask of Truth", Age.CHILD),
+    "MASK_OF_TRUTH": new Item("Mask of Truth", Age.CHILD, [Abilities.ZLETTER]),
     "CLAIM_CHECK": new Item("Claim Check", Age.ADULT),
     "KOKIRI_SWORD": new Item("Kokiri Sword", Age.CHILD, [Abilities.ATTACK, Abilities.SLASH]),
     "MASTER_SWORD": new Item("Master Sword", Age.ADULT, [Abilities.ATTACK, Abilities.SLASH]),
@@ -60,11 +60,11 @@ define(["classes/item", "classes/song", "data/ages", "data/abilities", "data/loc
   Items.ADULTS_WALLET = new Item("Adult's Wallet", Age.ANY, [], {supers: [Items.GIANTS_WALLET]});
 
   // trade items
-  Items.BUNNY_HOOD = new Item("Bunny Hood", Age.CHILD, [], {next: Items.MASK_OF_TRUTH});
-  Items.SPOOKY_MASK = new Item("Spooky Mask", Age.CHILD, [], {next: Items.BUNNY_HOOD});
-  Items.SKULL_MASK = new Item("Skull Mask", Age.CHILD, [], {next: Items.SPOOKY_MASK});
-  Items.KEATON_MASK = new Item("Keaton Mask", Age.CHILD, [], {next: Items.SKULL_MASK});
-  Items.ZELDAS_LETTER = new Item("Zelda's Letter", Age.CHILD, [], {next: Items.KEATON_MASK});
+  Items.BUNNY_HOOD = new Item("Bunny Hood", Age.CHILD, [Abilities.ZLETTER], {next: Items.MASK_OF_TRUTH});
+  Items.SPOOKY_MASK = new Item("Spooky Mask", Age.CHILD, [Abilities.ZLETTER], {next: Items.BUNNY_HOOD});
+  Items.SKULL_MASK = new Item("Skull Mask", Age.CHILD, [Abilities.ZLETTER], {next: Items.SPOOKY_MASK});
+  Items.KEATON_MASK = new Item("Keaton Mask", Age.CHILD, [Abilities.ZLETTER], {next: Items.SKULL_MASK});
+  Items.ZELDAS_LETTER = new Item("Zelda's Letter", Age.CHILD, [Abilities.ZLETTER], {next: Items.KEATON_MASK});
   Items.CHICKEN = new Item("Chicken", Age.CHILD, [], {next: Items.ZELDAS_LETTER});
   Items.WEIRD_EGG = new Item("Weird Egg", Age.CHILD, [], {next: Items.CHICKEN});
   Items.EYE_DROPS = new Item("Eye Drops", Age.ADULT, [], {next: Items.CLAIM_CHECK});
@@ -77,23 +77,23 @@ define(["classes/item", "classes/song", "data/ages", "data/abilities", "data/loc
   Items.COJIRO = new Item("Cojiro", Age.ADULT, [], {next: Items.ODD_MUSHROOM});
   Items.POCKET_CUCCO = new Item("Pocket Cucco", Age.ADULT, [], {next: Items.COJIRO});
   Items.POCKET_EGG = new Item("Pocket Egg", Age.ADULT, [], {next: Items.POCKET_CUCCO});
-  
+
   // keys
-  Items['SMALL_KEY_' + Locations.FOREST_TEMPLE] = new Item("Small Key (" + Locations.FOREST_TEMPLE + ")", Age.ANY, [], {count: 0, max: 5});
-  Items['SMALL_KEY_' + Locations.FIRE_TEMPLE] = new Item("Small Key (" + Locations.FIRE_TEMPLE + ")", Age.ANY, [], {count: 0, max: 8});
-  Items['SMALL_KEY_' + Locations.WATER_TEMPLE] = new Item("Small Key (" + Locations.WATER_TEMPLE + ")", Age.ANY, [], {count: 0, max: 6});
-  Items['SMALL_KEY_' + Locations.SHADOW_TEMPLE] = new Item("Small Key (" + Locations.SHADOW_TEMPLE + ")", Age.ANY, [], {count: 0, max: 5});
-  Items['SMALL_KEY_' + Locations.SPIRIT_TEMPLE] = new Item("Small Key (" + Locations.SPIRIT_TEMPLE + ")", Age.ANY, [], {count: 0, max: 5});
-  Items['SMALL_KEY_' + Locations.BOTTOM_OF_THE_WELL] = new Item("Small Key (" + Locations.BOTTOM_OF_THE_WELL + ")", Age.ANY, [], {count: 0, max: 3});
-  Items['SMALL_KEY_' + Locations.GERUDO_FORTRESS] = new Item("Small Key (" + Locations.GERUDO_FORTRESS + ")", Age.ANY, [], {count: 0, max: 4});
-  Items['SMALL_KEY_' + Locations.GERUDO_TRAINING_GROUNDS] = new Item("Small Key (" + Locations.GERUDO_TRAINING_GROUNDS + ")", Age.ANY, [], {count: 0, max: 9});
-  Items['SMALL_KEY_' + Locations.INSIDE_GANONS_CASTLE] = new Item("Small Key (" + Locations.INSIDE_GANONS_CASTLE + ")", Age.ANY, [], {count: 0, max: 2});
-  Items['BIG_KEY_' + Locations.FOREST_TEMPLE] = new Item("Big Key (" + Locations.FOREST_TEMPLE + ")");
-  Items['BIG_KEY_' + Locations.FIRE_TEMPLE] = new Item("Big Key (" + Locations.FIRE_TEMPLE + ")");
-  Items['BIG_KEY_' + Locations.WATER_TEMPLE] = new Item("Big Key (" + Locations.WATER_TEMPLE + ")");
-  Items['BIG_KEY_' + Locations.SHADOW_TEMPLE] = new Item("Big Key (" + Locations.SHADOW_TEMPLE + ")");
-  Items['BIG_KEY_' + Locations.SPIRIT_TEMPLE] = new Item("Big Key (" + Locations.SPIRIT_TEMPLE + ")");
-  Items['BIG_KEY_' + Locations.INSIDE_GANONS_CASTLE] = new Item("Big Key (" + Locations.INSIDE_GANONS_CASTLE + ")");
+  Items['SMALL_KEY_FOREST_TEMPLE'] = new Item("Small Key (" + Locations.FOREST_TEMPLE + ")", Age.ANY, [], {count: 0, max: 5});
+  Items['SMALL_KEY_FIRE_TEMPLE'] = new Item("Small Key (" + Locations.FIRE_TEMPLE + ")", Age.ANY, [], {count: 0, max: 8});
+  Items['SMALL_KEY_WATER_TEMPLE'] = new Item("Small Key (" + Locations.WATER_TEMPLE + ")", Age.ANY, [], {count: 0, max: 6});
+  Items['SMALL_KEY_SHADOW_TEMPLE'] = new Item("Small Key (" + Locations.SHADOW_TEMPLE + ")", Age.ANY, [], {count: 0, max: 5});
+  Items['SMALL_KEY_SPIRIT_TEMPLE'] = new Item("Small Key (" + Locations.SPIRIT_TEMPLE + ")", Age.ANY, [], {count: 0, max: 5});
+  Items['SMALL_KEY_BOTTOM_OF_THE_WELL'] = new Item("Small Key (" + Locations.BOTTOM_OF_THE_WELL + ")", Age.ANY, [], {count: 0, max: 3});
+  Items['SMALL_KEY_GERUDO_FORTRESS'] = new Item("Small Key (" + Locations.GERUDO_FORTRESS + ")", Age.ANY, [], {count: 0, max: 4});
+  Items['SMALL_KEY_GERUDO_TRAINING_GROUNDS'] = new Item("Small Key (" + Locations.GERUDO_TRAINING_GROUNDS + ")", Age.ANY, [], {count: 0, max: 9});
+  Items['SMALL_KEY_INSIDE_GANONS_CASTLE'] = new Item("Small Key (" + Locations.INSIDE_GANONS_CASTLE + ")", Age.ANY, [], {count: 0, max: 2});
+  Items['BIG_KEY_FOREST_TEMPLE'] = new Item("Big Key (" + Locations.FOREST_TEMPLE + ")");
+  Items['BIG_KEY_FIRE_TEMPLE'] = new Item("Big Key (" + Locations.FIRE_TEMPLE + ")");
+  Items['BIG_KEY_WATER_TEMPLE'] = new Item("Big Key (" + Locations.WATER_TEMPLE + ")");
+  Items['BIG_KEY_SHADOW_TEMPLE'] = new Item("Big Key (" + Locations.SHADOW_TEMPLE + ")");
+  Items['BIG_KEY_SPIRIT_TEMPLE'] = new Item("Big Key (" + Locations.SPIRIT_TEMPLE + ")");
+  Items['BIG_KEY_INSIDE_GANONS_CASTLE'] = new Item("Big Key (" + Locations.INSIDE_GANONS_CASTLE + ")");
 
   return Items;
 });

@@ -13,5 +13,6 @@ define({
   "SLASH": "Slash (Sword, Deku Stick, or Hammer)",
   "BURN": "Burn",
   "PLAY_SONG": "Play Song",
-  "BOTTLE": "Catch in Bottle"  
+  "BOTTLE": "Catch in Bottle",
+  "ZLETTER": "Zelda's written you a letter of authorization"
 });
