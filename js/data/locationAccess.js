@@ -199,6 +199,7 @@ define(["data/locations", "data/itemsAndSongs", "data/abilities", "data/ages", "
   access[Age.ADULT][Locations.DEATH_MOUNTAIN_TRAIL] = [
     {locations: [Locations.KAKARIKO_VILLAGE]},
     {locations: [Locations.DEATH_MOUNTAIN_CRATER], items: [Items.HOOKSHOT]},
+    {locations: [Locations.DEATH_MOUNTAIN_CRATER], items: [Items.HOVER_BOOTS]},
     {locations: [Locations.DODONGOS_CAVERN]},
     {locations: [Locations.GORON_CITY]}
   ];
@@ -206,7 +207,9 @@ define(["data/locations", "data/itemsAndSongs", "data/abilities", "data/ages", "
     {items: [Items.BOLERO_OF_FIRE]},
     {locations: [Locations.DEATH_MOUNTAIN_TRAIL], abilities: [Abilities.BLAST]},
     {locations: [Locations.FIRE_TEMPLE]},
-    {locations: [Locations.GORON_CITY], abilities: [Abilities.BOMB]}
+    {locations: [Locations.GORON_CITY], abilities: [Abilities.BOMB]},
+    {locations: [Locations.GORON_CITY], abilities: [Abilities.IGNITE]},
+    {locations: [Locations.GORON_CITY], abilities: [Abilities.STRENGTH]}
   ];
   access[Age.ADULT][Locations.GORON_CITY] = [
     {locations: [Locations.DEATH_MOUNTAIN_TRAIL]},
@@ -247,7 +250,6 @@ define(["data/locations", "data/itemsAndSongs", "data/abilities", "data/ages", "
     {locations: [Locations.GERUDO_VALLEY], items: [Items.EPONAS_SONG]},
     {locations: [Locations.GERUDO_VALLEY], items: [Items.LONGSHOT]},
     // precise hookshot
-    {locations: [Locations.GERUDO_VALLEY], settings: {RULES: 'ACCESSIBLE'}, items: [Items.HOOKSHOT]},
     {locations: [Locations.GERUDO_VALLEY], settings: {RULES: 'NO_MAJOR_GLITCHES'}, items: [Items.HOOKSHOT]},
     // megaflip
     {locations: [Locations.GERUDO_VALLEY], settings: {RULES: 'NO_MAJOR_GLITCHES'}, items: [Items.HYLIAN_SHIELD], abilities: [Abilities.BOMB]},

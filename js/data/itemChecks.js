@@ -8,7 +8,7 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
     new ItemCheck("Saria on Bridge", Locations.LOST_WOODS, [
       {settings: {FOREST: 'OPEN'}},
       {checks: {location: Locations.DEKU_TREE, name: "Queen Gohma"}}
-    ], {item: Items.FAIRY_OCARINA, settings: {SHUFFLE_OCARINAS: false}}),
+    ], {preset: {item: Items.FAIRY_OCARINA, settings: {SHUFFLE_OCARINAS: false}}}),
     new ItemCheck("Scrub under Bridge", Locations.LOST_WOODS, [
       {age: Age.CHILD, abilities: [Abilities.ATTACK]},
       {age: Age.CHILD, items: [Items.DEKU_SHIELD]},
@@ -51,17 +51,22 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
     new ItemCheck("Heart Dive Grotto", Locations.HYRULE_FIELD, [
       {items: [Items.IRON_BOOTS], abilities: [Abilities.BLAST]},
       {items: [Items.GOLDEN_SCALE], abilities: [Abilities.BLAST]},
-    ]),
+    ], {visible: {peek: true, requirements: [
+      {abilities: [Abilities.BLAST]},
+    ]}}),
     new ItemCheck("Grotto Near Lake (scrub)", Locations.HYRULE_FIELD, [{abilities: [Abilities.BLAST]}]),
     new ItemCheck("Grotto Near Lake (open)", Locations.HYRULE_FIELD),
     new ItemCheck("Grotto in southeast woods", Locations.HYRULE_FIELD, [{abilities: [Abilities.BLAST]}]),
     new ItemCheck("Ocarina of Time", Locations.HYRULE_FIELD, [
       {age: Age.CHILD, items: [Items.KOKIRI_EMERALD, Items.GORONS_RUBY, Items.ZORAS_SAPPHIRE]}
-    ], {item: Items.OCARINA_OF_TIME, settings: {SHUFFLE_OCARINAS: false}}),
+    ], {
+      preset: {item: Items.OCARINA_OF_TIME, settings: {SHUFFLE_OCARINAS: false}},
+      visible: {peek: true}
+    }),
     // Hyrule Castle
     new ItemCheck("Malon outside Castle", Locations.HYRULE_CASTLE, [
       {age: Age.CHILD},
-    ], {item: Items.WEIRD_EGG, settings: {SHUFFLE_WEIRD_EGG: false}}),
+    ], {preset: {item: Items.WEIRD_EGG, settings: {SHUFFLE_WEIRD_EGG: false}}}),
     new ItemCheck("Zelda's Lullaby", Locations.HYRULE_CASTLE, [
       {age: Age.CHILD, items: [Items.CHICKEN]},
       {age: Age.CHILD, items: [Items.ZELDAS_LETTER]},
@@ -72,8 +77,12 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
     ]),
     // Hyrule Market
     new ItemCheck("Slingshot Game", Locations.HYRULE_MARKET, [{age: Age.CHILD}]),
-    new ItemCheck("Bombchu Bowling (Bag)", Locations.HYRULE_MARKET, [{age: Age.CHILD, items: [Items.BOMBS]}]),
-    new ItemCheck("Bombchu Bowling (Heart)", Locations.HYRULE_MARKET, [{age: Age.CHILD, items: [Items.BOMBS]}]),
+    new ItemCheck("Bombchu Bowling (#1)", Locations.HYRULE_MARKET, [{age: Age.CHILD, items: [Items.BOMBS]}], {
+      visible: {peek: true}
+    }),
+    new ItemCheck("Bombchu Bowling (#2)", Locations.HYRULE_MARKET, [{age: Age.CHILD, items: [Items.BOMBS]}], {
+      visible: {peek: true}
+    }),
     new ItemCheck("Richard the Dog", Locations.HYRULE_MARKET, [{age: Age.CHILD}]),
     new ItemCheck("Treasure Chest Game", Locations.HYRULE_MARKET, [
       {age: Age.CHILD, offLogic: true},
@@ -88,7 +97,7 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
     new ItemCheck("Master Sword", Locations.TEMPLE_OF_TIME, [
       {age: Age.CHILD, settings: {DOOR_OF_TIME: 'OPEN'}},
       {age: Age.CHILD, items: [Items.SONG_OF_TIME]}
-    ], {item: Items.MASTER_SWORD}),
+    ], {preset: {item: Items.MASTER_SWORD}}),
     new ItemCheck("Prelude of Light", Locations.TEMPLE_OF_TIME, [
       {age: Age.ADULT, items: [Items.FOREST_MEDALLION]}
     ]),
@@ -114,7 +123,9 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {age: Age.CHILD, checks: {location: Locations.HYRULE_CASTLE, name: "Malon outside Castle"}, items: [Items.FAIRY_OCARINA, Items.BUNNY_HOOD]},
       {age: Age.CHILD, checks: {location: Locations.HYRULE_CASTLE, name: "Malon outside Castle"}, items: [Items.FAIRY_OCARINA, Items.MASK_OF_TRUTH]},
     ]),
-    new ItemCheck("Heart Piece", Locations.LON_LON_RANCH, [{age: Age.CHILD}]),
+    new ItemCheck("Heart Piece", Locations.LON_LON_RANCH, [{age: Age.CHILD}], {
+      visible: {peek: true, requirements: [{}]}
+    }),
     // Kakariko Village
     new ItemCheck("Anju's Cuccos", Locations.KAKARIKO_VILLAGE, [{age: Age.CHILD}]),
     new ItemCheck("Redead Grotto", Locations.KAKARIKO_VILLAGE, [{abilities: [Abilities.BLAST]}]),
@@ -126,14 +137,18 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
     new ItemCheck("Cow Cage", Locations.KAKARIKO_VILLAGE, [
       {age: Age.ADULT, items: [Items.HOOKSHOT]},
       {offLogic: true}
-    ]),
+    ], {
+      visible: {peek: true, requirements: [{}]}
+    }),
     new ItemCheck("Archery Game", Locations.KAKARIKO_VILLAGE, [{age: Age.ADULT, items: [Items.FAIRY_BOW]}]),
     new ItemCheck("Back Grotto", Locations.KAKARIKO_VILLAGE),
     new ItemCheck("Windmill Heart", Locations.KAKARIKO_VILLAGE, [
       {age: Age.CHILD, items: [Items.BOOMERANG]},
       {age: Age.ADULT, items: [Items.SONG_OF_TIME]},
       {age: Age.ADULT, offLogic: true},
-    ]),
+    ], {
+      visible: {peek: true, requirements: [{}]}
+    }),
     new ItemCheck("10 Gold Skulltulas", Locations.KAKARIKO_VILLAGE, [
       {itemCounts: [{count: 10, item: Items.GOLD_SKULLTULA}]},
     ]),
@@ -153,13 +168,17 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
     new ItemCheck("Nocturne of Shadow", Locations.KAKARIKO_VILLAGE, [{age: Age.ADULT, items: [Items.FOREST_MEDALLION, Items.FIRE_MEDALLION, Items.WATER_MEDALLION]}]),
     // Graveyard
     new ItemCheck("Shield Grave", Locations.GRAVEYARD),
-    new ItemCheck("Dampe's Tour", Locations.GRAVEYARD, [{age: Age.CHILD}]),
+    new ItemCheck("Dampe's Tour", Locations.GRAVEYARD, [{age: Age.CHILD}], {
+      visible: {peek: true}
+    }),
     new ItemCheck("Dampe's Race 1", Locations.GRAVEYARD, [{age: Age.ADULT}]),
-    new ItemCheck("Dampe's Race 2", Locations.GRAVEYARD, [{age: Age.ADULT}]),
+    new ItemCheck("Dampe's Race 2", Locations.GRAVEYARD, [{age: Age.ADULT}], {
+      visible: {peek: true}
+    }),
     new ItemCheck("Redead Grave", Locations.GRAVEYARD, [{items: [Items.SUNS_SONG]}]),
     new ItemCheck("Royal Tomb Torches", Locations.GRAVEYARD, [
       {items: [Items.ZELDAS_LULLABY], abilities: [Abilities.BURN]},
-      {age: Age.CHILD, items: [Items.ZELDAS_LULLABY, Items.DEKU_STICK], glitches: true}
+      {age: Age.CHILD, items: [Items.ZELDAS_LULLABY, Items.DEKU_STICK], offLogic: true}
     ]),
     new ItemCheck("Sun's Song", Locations.GRAVEYARD, [{items: [Items.ZELDAS_LULLABY]}]),
     new ItemCheck("High Crate", Locations.GRAVEYARD, [
@@ -167,9 +186,13 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {age: Age.ADULT, items: [Items.MAGIC_BEANS]},
       {age: Age.CHILD, items: [Items.BOOMERANG], offLogic: true},
       {age: Age.ADULT, items: [Items.HOOKSHOT], glitches: true},
-    ]),
+    ], {
+      visible: {peek: true, requirements: [{}]}
+    }),
     // Death Mountain Trail
-    new ItemCheck("Heart above DC", Locations.DEATH_MOUNTAIN_TRAIL),
+    new ItemCheck("Heart above DC", Locations.DEATH_MOUNTAIN_TRAIL, [{}], {
+      visible: {peek: true}
+    }),
     new ItemCheck("Chest behind Wall", Locations.DEATH_MOUNTAIN_TRAIL, [
       {abilities: [Abilities.BLAST]},
       {age: Age.CHILD, abilities: [Abilities.STRENGTH]}
@@ -190,7 +213,9 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {age: Age.ADULT, abilities: [Abilities.IGNITE]},
       {age: Age.ADULT, items: [Items.BOLERO_OF_FIRE, Items.HOOKSHOT]},
       {age: Age.ADULT, items: [Items.BOLERO_OF_FIRE, Items.MAGIC_BEANS]}
-    ]),
+    ], {
+      visible: {peek: true, requirements: [{}]}
+    }),
     new ItemCheck("Volcano Heart", Locations.DEATH_MOUNTAIN_CRATER, [
       // hover boots
       {age: Age.ADULT, items: [Items.HOVER_BOOTS], abilities: [Abilities.BLAST]},
@@ -205,7 +230,9 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       // megaflip
       {age: Age.ADULT, items: [Items.HYLIAN_SHIELD], abilities: [Abilities.BOMB], glitches: true},
       {age: Age.ADULT, items: [Items.MIRROR_SHIELD], abilities: [Abilities.BOMB], glitches: true}
-    ]),
+    ], {
+      visible: {peek: true, requirements: [{}]}
+    }),
     new ItemCheck("Double Magic Fairy", Locations.DEATH_MOUNTAIN_CRATER, [
       {items: [Items.ZELDAS_LULLABY, Items.MEGATON_HAMMER]},
       {items: [Items.ZELDAS_LULLABY, Items.HYLIAN_SHIELD], abilities: [Abilities.BOMB], glitches: true},
@@ -233,7 +260,7 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {age: Age.CHILD, items: [Items.ZELDAS_LULLABY, Items.DEKU_STICK], abilities: [Abilities.STRENGTH]},
       {age: Age.CHILD, abilities: [Abilities.BURN, Abilities.BOMB]},
       {age: Age.CHILD, abilities: [Abilities.BURN, Abilities.STRENGTH]}
-    ]),
+    ], {visible: {peek: true}}),
     new ItemCheck("Darunia", Locations.GORON_CITY, [{age: Age.CHILD, items: [Items.ZELDAS_LULLABY, Items.SARIAS_SONG]}]),
     new ItemCheck("Hot Rod Goron", Locations.GORON_CITY, [{age: Age.CHILD, items: [Items.BOMBS]}]),
     new ItemCheck("Link the Goron", Locations.GORON_CITY, [
@@ -253,12 +280,17 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {age: Age.CHILD, abilities: [Abilities.BLAST]},
       {age: Age.CHILD, abilities: [Abilities.SINK]},
       {age: Age.ADULT}
+    ], {visible: {peek: true}}),
+    new ItemCheck("Grotto", Locations.ZORAS_RIVER, [
+      {age: Age.CHILD, abilities: [Abilities.BLAST]},
+      {age: Age.CHILD, abilities: [Abilities.SINK]},
+      {age: Age.ADULT}
     ]),
     new ItemCheck("Heart Piece 2", Locations.ZORAS_RIVER, [
       {age: Age.CHILD, abilities: [Abilities.BLAST]},
       {age: Age.CHILD, abilities: [Abilities.SINK]},
       {age: Age.ADULT}
-    ]),
+    ], {visible: {peek: true}}),
     new ItemCheck("Frogs 1", Locations.ZORAS_RIVER, [
       {age: Age.CHILD, abilities: [Abilities.BLAST], items: [Items.SONG_OF_STORMS]},
       {age: Age.CHILD, abilities: [Abilities.SINK], items: [Items.SONG_OF_STORMS]},
@@ -267,22 +299,28 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {age: Age.CHILD, abilities: [Abilities.BLAST], items: [Items.ZELDAS_LULLABY, Items.EPONAS_SONG, Items.SARIAS_SONG, Items.SUNS_SONG, Items.SONG_OF_TIME]},
       {age: Age.CHILD, abilities: [Abilities.SINK], items: [Items.ZELDAS_LULLABY, Items.EPONAS_SONG, Items.SARIAS_SONG, Items.SUNS_SONG, Items.SONG_OF_TIME]}
     ]),
-    new ItemCheck("Grotto", Locations.ZORAS_RIVER, [
-      {age: Age.CHILD, abilities: [Abilities.BLAST]},
-      {age: Age.CHILD, abilities: [Abilities.SINK]},
-      {age: Age.ADULT}
-    ]),
     // Zora's Domain
     new ItemCheck("Diving Game", Locations.ZORAS_DOMAIN, [{age: Age.CHILD}]),
     new ItemCheck("Torch Run", Locations.ZORAS_DOMAIN, [{age: Age.CHILD, items: [Items.DEKU_STICK]}]),
     new ItemCheck("King Zora", Locations.ZORAS_DOMAIN, [{age: Age.ADULT, abilities: [Abilities.BOTTLE]}]),
     // Zora's Fountain
     new ItemCheck("Farore's Wind Fairy", Locations.ZORAS_FOUNTAIN, [{items: [Items.ZELDAS_LULLABY], abilities: [Abilities.BOMB]}]),
-    new ItemCheck("Iceberg Heart", Locations.ZORAS_FOUNTAIN, [{age: Age.ADULT}]),
-    new ItemCheck("Underwater Heart", Locations.ZORAS_FOUNTAIN, [{age: Age.ADULT, items: [Items.IRON_BOOTS]}]),
+    new ItemCheck("Iceberg Heart", Locations.ZORAS_FOUNTAIN, [{age: Age.ADULT}], {
+      visible: {peek: true}
+    }),
+    new ItemCheck("Underwater Heart", Locations.ZORAS_FOUNTAIN, [
+      {age: Age.ADULT, items: [Items.IRON_BOOTS]}
+    ], {visible: {peek: true, requirements: [
+      {age: Age.ADULT, items: [Items.IRON_BOOTS]},
+      {age: Age.ADULT, items: [Items.GOLDEN_SCALE]}
+    ]}}),
     // Lake Hylia
-    new ItemCheck("Fishing (Child)", Locations.LAKE_HYLIA, [{age: Age.CHILD, items: [Items.KOKIRI_SWORD]}]),
-    new ItemCheck("Ruto's Letter", Locations.LAKE_HYLIA, [{age: Age.CHILD, items: [Items.SILVER_SCALE]}]),
+    new ItemCheck("Fishing (Child)", Locations.LAKE_HYLIA, [{age: Age.CHILD}]),
+    new ItemCheck("Ruto's Letter", Locations.LAKE_HYLIA, [
+      {age: Age.CHILD, items: [Items.SILVER_SCALE]}
+    ], {visible: {peek: true, requirements: [
+      {age: Age.CHILD}
+    ]}}),
     new ItemCheck("Fishing (Adult)", Locations.LAKE_HYLIA, [
       {age: Age.ADULT, items: [Items.MAGIC_BEANS]},
       {age: Age.ADULT, items: [Items.HOOKSHOT, Items.FAIRY_OCARINA]},
@@ -291,7 +329,7 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
     new ItemCheck("Lake Lab (top)", Locations.LAKE_HYLIA, [
       {age: Age.ADULT, items: [Items.MAGIC_BEANS]},
       {age: Age.ADULT, items: [Items.HOOKSHOT, Items.FAIRY_OCARINA]},
-    ]),
+    ], {visible: {peek: true}}),
     new ItemCheck("Lake Lab (dive)", Locations.LAKE_HYLIA, [
       {age: Age.ADULT, items: [Items.GOLDEN_SCALE]},
       {age: Age.ADULT, items: [Items.HOOKSHOT, Items.IRON_BOOTS]},
@@ -300,31 +338,35 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {age: Age.ADULT, items: [Items.FAIRY_BOW], checks: {location: Locations.WATER_TEMPLE, name: "Morpha"}},
       {age: Age.ADULT, items: [Items.FAIRY_BOW, Items.LONGSHOT, Items.FAIRY_OCARINA]},
       {age: Age.ADULT, items: [Items.FAIRY_BOW, Items.HOOKSHOT], glitches: true},
-    ]),
+    ], {visible: {peek: true, requirements: [
+      {age: Age.ADULT, items: [Items.FAIRY_BOW]}
+    ]}}),
     // Gerudo Valley
     new ItemCheck("Crate Heart", Locations.GERUDO_VALLEY, [
       {age: Age.CHILD},
       {age: Age.ADULT, items: [Items.LONGSHOT]},
       {age: Age.ADULT, items: [Items.EPONAS_SONG]},
-      {age: Age.ADULT, items: [Items.HOOKSHOT], offLogic: true},
       {age: Age.ADULT, items: [Items.REQUIEM_OF_SPIRIT], offLogic: true},
+      {age: Age.ADULT, items: [Items.HOOKSHOT], glitches: true},
       {age: Age.ADULT, abilities: [Abilities.SHIELD, Abilities.BOMB], glitches: true},
       {age: Age.ADULT, items: [Items.HOVER_BOOTS], abilities: [Abilities.SHIELD, Abilities.SLASH], glitches: true},
       {age: Age.ADULT, items: [Items.HOVER_BOOTS, Items.MEGATON_HAMMER], glitches: true},
-    ]),
-    new ItemCheck("Waterfall Heart", Locations.GERUDO_VALLEY),
+    ], {visible: {peek: true}}),
+    new ItemCheck("Waterfall Heart", Locations.GERUDO_VALLEY, [{}], {
+      visible: {peek: true}
+    }),
     new ItemCheck("Hammer Chest", Locations.GERUDO_VALLEY, [
       {age: Age.ADULT, items: [Items.LONGSHOT, Items.MEGATON_HAMMER]},
       {age: Age.ADULT, items: [Items.EPONAS_SONG, Items.MEGATON_HAMMER]},
-      {age: Age.ADULT, items: [Items.HOOKSHOT, Items.MEGATON_HAMMER], offLogic: true},
       {age: Age.ADULT, items: [Items.REQUIEM_OF_SPIRIT, Items.MEGATON_HAMMER], offLogic: true},
+      {age: Age.ADULT, items: [Items.HOOKSHOT, Items.MEGATON_HAMMER], glitches: true},
       {age: Age.ADULT, abilities: [Abilities.SHIELD, Abilities.BOMB], glitches: true},
       {age: Age.ADULT, items: [Items.HOVER_BOOTS, Items.MEGATON_HAMMER], glitches: true},
     ]),
     // Gerudo Fortress
     new ItemCheck("Free the Carpenters", Locations.GERUDO_FORTRESS, [
       {abilities: [Abilities.ATTACK]}
-    ], {item: Items.GERUDOS_CARD, settings: {SHUFFLE_GERUDOS_CARD: false}}),
+    ], {preset: {item: Items.GERUDOS_CARD, settings: {SHUFFLE_GERUDOS_CARD: false}}}),
     new ItemCheck("Rooftop Chest", Locations.GERUDO_FORTRESS, [
       {items: [Items.LONGSHOT]},
       {items: [Items.HOOKSHOT, Items.FAIRY_OCARINA]},
@@ -350,7 +392,9 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {age: Age.ADULT, items: [Items.MAGIC_BEANS, Items.REQUIEM_OF_SPIRIT]},
       {age: Age.ADULT, items: [Items.MAGIC_BEANS], glitches: true},
       {age: Age.ADULT, abilities: [Abilities.SHIELD, Abilities.BOMB], glitches: true},
-    ]),
+    ], {
+      visible: {peek: true, requirements: [{}]}
+    }),
     // Deku Tree
     new ItemCheck("Map", Locations.DEKU_TREE),
     new ItemCheck("Slingshot", Locations.DEKU_TREE, [
@@ -387,7 +431,7 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {items: [Items.MEGATON_HAMMER, Items.DEKU_NUTS], abilities: [Abilities.BURN], glitches: true},
       {items: [Items.MEGATON_HAMMER, Items.BOOMERANG], abilities: [Abilities.BURN], glitches: true},
       {items: [Items.MEGATON_HAMMER, Items.BOMBCHU], abilities: [Abilities.BURN], glitches: true}
-    ]),
+    ], {visible: {peek: true}}),
     // Dodongo's Cavern
     new ItemCheck("Map", Locations.DODONGOS_CAVERN, [
       {abilities: [Abilities.CRUMBLE]},
@@ -410,12 +454,16 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {abilities: [Abilities.CRUMBLE, Abilities.STRENGTH]}
     ]),
     new ItemCheck("Above Boss", Locations.DODONGOS_CAVERN, [{abilities: [Abilities.BOMB]}]),
-    new ItemCheck("King Dodongo", Locations.DODONGOS_CAVERN, [{abilities: [Abilities.BOMB]}]),
+    new ItemCheck("King Dodongo", Locations.DODONGOS_CAVERN, [
+      {abilities: [Abilities.BOMB]}
+    ], {visible: {peek: true}}),
     // Jabu Jabu's Belly
     new ItemCheck("Boomerang", Locations.JABU_JABUS_BELLY),
     new ItemCheck("Map", Locations.JABU_JABUS_BELLY, [{items: [Items.BOOMERANG]}]),
     new ItemCheck("Compass", Locations.JABU_JABUS_BELLY, [{items: [Items.BOOMERANG]}]),
-    new ItemCheck("Barinade", Locations.JABU_JABUS_BELLY, [{items: [Items.BOOMERANG]}]),
+    new ItemCheck("Barinade", Locations.JABU_JABUS_BELLY, [
+      {items: [Items.BOOMERANG]}
+    ], {visible: {peek: true}}),
     // Forest Temple
     new ItemCheck("First Room", Locations.FOREST_TEMPLE),
     new ItemCheck("Stalfos Fight", Locations.FOREST_TEMPLE, [{abilities: [Abilities.SLASH]}]),
@@ -479,7 +527,7 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
     ]),
     new ItemCheck("Phantom Ganon", Locations.FOREST_TEMPLE, [
       {items: [Items.FAIRY_BOW], abilities: [Abilities.STRENGTH]}
-    ]),
+    ], {visible: {peek: true}}),
     // Fire Temple
     new ItemCheck("Near Boss Door", Locations.FIRE_TEMPLE),
     new ItemCheck("Flare Dancer", Locations.FIRE_TEMPLE, [
@@ -533,7 +581,7 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {items: [Items.MEGATON_HAMMER], abilities: [Abilities.STRENGTH]},
       {items: [Items.MEGATON_HAMMER, Items.HOVER_BOOTS]},
       {items: [Items.MEGATON_HAMMER], offLogic: true},
-    ]),
+    ], {visible: {peek: true}}),
     // Water Temple
     new ItemCheck("Map", Locations.WATER_TEMPLE, [
       {items: [Items.IRON_BOOTS]},
@@ -626,7 +674,7 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {items: [Items.LONGSHOT]},
       {items: [Items.HOVER_BOOTS, Items.MEGATON_HAMMER], glitches: true},
       {items: [Items.HOVER_BOOTS], abilities: [Abilities.SHIELD, Abilities.BOMB], glitches: true},
-    ]),
+    ], {visible: {peek: true}}),
     // Shadow Temple
     new ItemCheck("Map", Locations.SHADOW_TEMPLE),
     new ItemCheck("Dead Hand", Locations.SHADOW_TEMPLE, [{abilities: [Abilities.SLASH]}]),
@@ -658,11 +706,13 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
     ]),
     new ItemCheck("Falling Spikes High 1", Locations.SHADOW_TEMPLE, [
       {items: [Items.HOVER_BOOTS], abilities: [Abilities.STRENGTH]},
+      {items: [Items.HOVER_BOOTS], offLogic: true},
       {items: [Items.HYLIAN_SHIELD], abilities: [Abilities.BOMB, Abilities.STRENGTH], glitches: true},
       {items: [Items.MIRROR_SHIELD], abilities: [Abilities.BOMB, Abilities.STRENGTH], glitches: true}
     ]),
     new ItemCheck("Falling Spikes High 2", Locations.SHADOW_TEMPLE, [
       {items: [Items.HOVER_BOOTS], abilities: [Abilities.STRENGTH]},
+      {items: [Items.HOVER_BOOTS], offLogic: true},
       {items: [Items.HYLIAN_SHIELD], abilities: [Abilities.BOMB, Abilities.STRENGTH], glitches: true},
       {items: [Items.MIRROR_SHIELD], abilities: [Abilities.BOMB, Abilities.STRENGTH], glitches: true}
     ]),
@@ -676,7 +726,7 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {items: [Items.HOOKSHOT, Items.HOVER_BOOTS], abilities: [Abilities.STRENGTH]},
       {items: [Items.HOOKSHOT, Items.HYLIAN_SHIELD], abilities: [Abilities.BOMB], glitches: true},
       {items: [Items.HOOKSHOT, Items.MIRROR_SHIELD], abilities: [Abilities.BOMB], glitches: true}
-    ]),
+    ], {visible: {peek: true}}),
     new ItemCheck("Wind Hint", Locations.SHADOW_TEMPLE, [
       {items: [Items.HOOKSHOT, Items.HOVER_BOOTS]},
       {items: [Items.HOOKSHOT, Items.HYLIAN_SHIELD], abilities: [Abilities.BOMB], glitches: true},
@@ -720,7 +770,7 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {items: [Items.ZELDAS_LULLABY, Items.LONGSHOT, Items.HOVER_BOOTS]},
       {items: [Items.ZELDAS_LULLABY, Items.LONGSHOT, Items.HYLIAN_SHIELD], abilities: [Abilities.BOMB], glitches: true},
       {items: [Items.ZELDAS_LULLABY, Items.LONGSHOT, Items.MIRROR_SHIELD], abilities: [Abilities.BOMB], glitches: true}
-    ]),
+    ], {visible: {peek: true}}),
     // Spirit Temple
     new ItemCheck("Child-Only 1", Locations.SPIRIT_TEMPLE, [
       // boomerang
@@ -817,7 +867,7 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
     ]),
     new ItemCheck("Twinrova", Locations.SPIRIT_TEMPLE, [
       {age: Age.ADULT, items: [Items.MIRROR_SHIELD, Items.HOOKSHOT], abilities: [Abilities.BOMB, Abilities.ATTACK]},
-    ]),
+    ], {visible: {peek: true}}),
     // Bottom of the Well
     new ItemCheck("Front Bombable", Locations.BOTTOM_OF_THE_WELL, [{abilities: [Abilities.BOMB]}]),
     new ItemCheck("Front Hidden", Locations.BOTTOM_OF_THE_WELL, [
@@ -848,7 +898,7 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {items: [Items.DEKU_STICK]},
       {abilities: [Abilities.BURN]},
       {items: [Items.BOOMERANG], offLogic: true},
-    ]),
+    ], {visible: {peek: true, requirements: [{}]}}),
     new ItemCheck("Underwater Front", Locations.BOTTOM_OF_THE_WELL, [{items: [Items.ZELDAS_LULLABY]}]),
     new ItemCheck("Invisible Chest", Locations.BOTTOM_OF_THE_WELL, [
       {items: [Items.ZELDAS_LULLABY, Items.LENS_OF_TRUTH]},
@@ -861,7 +911,10 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
     // Ice Cavern
     new ItemCheck("Map", Locations.ICE_CAVERN, [{abilities: [Abilities.BOTTLE]}]),
     new ItemCheck("Compass", Locations.ICE_CAVERN, [{abilities: [Abilities.BOTTLE]}]),
-    new ItemCheck("Heart Piece", Locations.ICE_CAVERN, [{abilities: [Abilities.BOTTLE]}]),
+    new ItemCheck("Heart Piece", Locations.ICE_CAVERN, [
+      {abilities: [Abilities.BOTTLE]},
+      {offLogic: true},
+    ], {visible: {peek: true}, requirements: [{}]}),
     new ItemCheck("Iron Boots", Locations.ICE_CAVERN, [{abilities: [Abilities.BOTTLE]}]),
     new ItemCheck("Serenade of Water", Locations.ICE_CAVERN, [{abilities: [Abilities.BOTTLE, Abilities.ATTACK]}]),
     // Gerudo Training Grounds
@@ -931,7 +984,9 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
     new ItemCheck("Beamos", Locations.GERUDO_TRAINING_GROUNDS, [
       {abilities: [Abilities.BOMB]},
     ]),
-    new ItemCheck("Key Ledge", Locations.GERUDO_TRAINING_GROUNDS),
+    new ItemCheck("Key Ledge", Locations.GERUDO_TRAINING_GROUNDS, [{}], {
+      visible: {peek: true}
+    }),
     new ItemCheck("Maze Right 1", Locations.GERUDO_TRAINING_GROUNDS),
     new ItemCheck("Maze Right 2", Locations.GERUDO_TRAINING_GROUNDS),
     new ItemCheck("Underwater Rupees", Locations.GERUDO_TRAINING_GROUNDS, [

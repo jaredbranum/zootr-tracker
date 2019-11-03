@@ -253,19 +253,113 @@
     <div class="clear"></div>
   </div>
   <div id="overlay">
+    <div id="peek-item-popup" class="popup">
+      <h3 class="peek-check-name"></h3>
+      <p>What's there?</p>
+      <form id="peek-item">
+        <table class="borderless">
+          <tr>
+            <td class="peek-item" data-item="FAIRY_SLINGSHOT" data-original-item="FAIRY_SLINGSHOT">
+              <img src="images/FAIRY_SLINGSHOT.png" />
+            </td>
+            <td class="peek-item" data-item="BOMBS" data-original-item="BOMBS">
+              <img src="images/BOMB_BAG_20.png" />
+            </td>
+            <td class="peek-item" data-item="FAIRY_BOW" data-original-item="FAIRY_BOW">
+              <img src="images/FAIRY_BOW.png" />
+            </td>
+            <td class="peek-item" data-item="FIRE_ARROWS" data-original-item="FIRE_ARROWS">
+              <img src="images/FIRE_ARROWS.png" />
+            </td>
+            <td class="peek-item" data-item="LIGHT_ARROWS" data-original-item="LIGHT_ARROWS">
+              <img src="images/LIGHT_ARROWS.png" />
+            </td>
+          </tr>
+          <tr>
+            <td class="peek-item" data-item="BOMBCHU" data-original-item="BOMBCHU">
+              <img src="images/BOMBCHU.png" />
+            </td>
+            <td class="peek-item" data-item="HOOKSHOT" data-original-item="HOOKSHOT">
+              <img src="images/HOOKSHOT.png" />
+            </td>
+            <td class="peek-item" data-item="BOOMERANG" data-original-item="BOOMERANG">
+              <img src="images/BOOMERANG.png" />
+            </td>
+            <td class="peek-item" data-item="DINS_FIRE" data-original-item="DINS_FIRE">
+              <img src="images/DINS_FIRE.png" />
+            </td>
+            <td class="peek-item" data-item="FARORES_WIND" data-original-item="FARORES_WIND">
+              <img src="images/FARORES_WIND.png" />
+            </td>
+          </tr>
+          <tr>
+            <td class="peek-item" data-item="MEGATON_HAMMER" data-original-item="MEGATON_HAMMER">
+              <img src="images/MEGATON_HAMMER.png" />
+            </td>
+            <td class="peek-item" data-item="BOTTLE" data-original-item="BOTTLE">
+              <img src="images/BOTTLE.png" />
+              <span class="count"></span>
+            </td>
+            <td class="peek-item" data-item="RUTOS_LETTER" data-original-item="RUTOS_LETTER">
+              <img src="images/RUTOS_LETTER.png" />
+            </td>
+            <td class="peek-item" data-item="PRESCRIPTION" data-original-item="POCKET_EGG">
+              <img src="images/PRESCRIPTION.png" />
+            </td>
+            <td class="peek-item" data-item="LENS_OF_TRUTH" data-original-item="LENS_OF_TRUTH">
+              <img src="images/LENS_OF_TRUTH.png" />
+            </td>
+          </tr>
+          <tr>
+            <td class="peek-item" data-item="KOKIRI_SWORD" data-original-item="KOKIRI_SWORD">
+              <img src="images/KOKIRI_SWORD.png" />
+            </td>
+            <td class="peek-item" data-item="BIGGORONS_SWORD" data-original-item="BIGGORONS_SWORD">
+              <img src="images/BIGGORONS_SWORD.png" />
+            </td>
+            <td class="peek-item" data-item="HYLIAN_SHIELD" data-original-item="HYLIAN_SHIELD">
+              <img src="images/HYLIAN_SHIELD.png" />
+            </td>
+            <td class="peek-item" data-item="MIRROR_SHIELD" data-original-item="MIRROR_SHIELD">
+              <img src="images/MIRROR_SHIELD.png" />
+            </td>
+            <td class="peek-item" data-item="GORON_TUNIC" data-original-item="GORON_TUNIC">
+              <img src="images/GORON_TUNIC.png" />
+            </td>
+          </tr>
+          <tr>
+            <td class="peek-item" data-item="SILVER_SCALE" data-original-item="SILVER_SCALE">
+              <img src="images/SILVER_SCALE.png" />
+            </td>
+            <td class="peek-item" data-item="GORONS_BRACELET" data-original-item="GORONS_BRACELET">
+              <img src="images/GORONS_BRACELET.png" />
+            </td>
+            <td class="peek-item" data-item="IRON_BOOTS" data-original-item="IRON_BOOTS">
+              <img src="images/IRON_BOOTS.png" />
+            </td>
+            <td class="peek-item" data-item="HOVER_BOOTS" data-original-item="HOVER_BOOTS">
+              <img src="images/HOVER_BOOTS.png" />
+            </td>
+            <td class="peek-item" data-item="MAGIC" data-original-item="MAGIC">
+              <img src="images/MAGIC.png" />
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
     <div id="check-pedestal-popup" class="popup">
       <h3>Pedestal of Time</h3>
       <p>Read the pedestal of time, and click each hint in the order given to you.</p>
       <form id="read-pedestal">
         <button type="button" class="pedestal-hint" value="Free">Link's Pocket</button>
-        <button type="button" class="pedestal-hint" value="Deku">Ancient Tree</button>
-        <button type="button" class="pedestal-hint" value="DC">Immense Cavern</button>
-        <button type="button" class="pedestal-hint" value="Jabu">Belly of a Deity</button>
-        <button type="button" class="pedestal-hint" value="Forest">Deep Forest</button>
-        <button type="button" class="pedestal-hint" value="Fire">High Mountain</button>
-        <button type="button" class="pedestal-hint" value="Water">Vast Lake</button>
-        <button type="button" class="pedestal-hint" value="Shdw">House of the Dead</button>
-        <button type="button" class="pedestal-hint" value="Spirit">Goddess of the Sand</button>
+        <button type="button" class="pedestal-hint" value="Deku">Deku Tree</button>
+        <button type="button" class="pedestal-hint" value="DC">Dodongo's Cavern</button>
+        <button type="button" class="pedestal-hint" value="Jabu">Jabu Jabu's Belly</button>
+        <button type="button" class="pedestal-hint" value="Forest">Forest Temple</button>
+        <button type="button" class="pedestal-hint" value="Fire">Fire Temple</button>
+        <button type="button" class="pedestal-hint" value="Water">Water Temple</button>
+        <button type="button" class="pedestal-hint" value="Shdw">Shadow Temple</button>
+        <button type="button" class="pedestal-hint" value="Spirit">Spirit Temple</button>
       </form>
     </div>
   </div>

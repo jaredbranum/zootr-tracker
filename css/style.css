@@ -4,10 +4,46 @@ body {
   color: #f0f0f0;
 }
 
-#locations.hide-inaccessible .region.inaccessible,
-#locations.hide-inaccessible .location.inaccessible,
-#locations.hide-inaccessible .item-check.inaccessible {
+#locations.hide-inaccessible .region.inaccessible:not(.peekable),
+#locations.hide-inaccessible .location.inaccessible:not(.peekable),
+#locations.hide-inaccessible .item-check.inaccessible:not(.peekable) {
   display: none;
+}
+
+#locations.hide-inaccessible .item-check.inaccessible.peekable input,
+#locations.hide-inaccessible .item-check.inaccessible.peekable label {
+  opacity: 0.6;
+}
+
+#locations.hide-inaccessible .item-check.inaccessible.peekable .peek-controls {
+  display: inline-block;
+}
+
+#locations .peek-controls {
+  display: none;
+  margin-left: 10px;
+}
+
+#locations .peek-controls img {
+  display: none;
+  height: 15px;
+  margin-bottom: -3px;
+}
+
+#locations .peek-controls:hover {
+  cursor: pointer;
+}
+
+.item-check > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#locations.hide-inaccessible .item-check.peek-controls {
+  display: none;
+  content: " \1F441";
+  font-size: 12px;
+  display: inline-block;
 }
 
 #locations.keysanity .region.inaccessible.has-keys {
@@ -228,9 +264,6 @@ ul.item-checks li input[type=checkbox]:checked + label {
 
 .popup {
   display: none;
-}
-
-#check-pedestal-popup {
   padding: 20px;
   width: 400px;
   background: #272822;
@@ -244,4 +277,17 @@ ul.item-checks li input[type=checkbox]:checked + label {
   width: 200px;
   display: block;
   margin: 10px auto;
+}
+
+#peek-item-popup table {
+  margin: auto;
+}
+
+#peek-item-popup .peek-item {
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }
