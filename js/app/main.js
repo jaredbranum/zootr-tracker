@@ -83,6 +83,16 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
     });
   };
 
+  var generateKey = function(){
+    if (window.location.hash) return;
+    var key = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+    window.location.hash = key;
+    window.location.reload();
+  };
+
   var setupPopups = function(){
     $(document).on('keydown', function(e){
       if (e.which == 27){ // ESC key
@@ -440,6 +450,7 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
   };
 
   $(function(){
+    generateKey();
     setupPopups();
     generateLocationList($('#locations .locations'), Regions);
     generateChecklist(ItemChecks);
