@@ -77,10 +77,10 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
     ]),
     // Hyrule Market
     new ItemCheck("Slingshot Game", Locations.HYRULE_MARKET, [{age: Age.CHILD}]),
-    new ItemCheck("Bombchu Bowling (#1)", Locations.HYRULE_MARKET, [{age: Age.CHILD, items: [Items.BOMBS]}], {
+    new ItemCheck("Bombchu Bowling (1)", Locations.HYRULE_MARKET, [{age: Age.CHILD, items: [Items.BOMBS]}], {
       visible: {peek: true}
     }),
-    new ItemCheck("Bombchu Bowling (#2)", Locations.HYRULE_MARKET, [{age: Age.CHILD, items: [Items.BOMBS]}], {
+    new ItemCheck("Bombchu Bowling (2)", Locations.HYRULE_MARKET, [{age: Age.CHILD, items: [Items.BOMBS]}], {
       visible: {peek: true}
     }),
     new ItemCheck("Richard the Dog", Locations.HYRULE_MARKET, [{age: Age.CHILD}]),
