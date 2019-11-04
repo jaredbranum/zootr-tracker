@@ -16,10 +16,6 @@ define({
     "OPEN": "Open",
     "CLOSED": "Closed"
   },
-  "Death Mountain Trail": {
-    "OPEN": "Open",
-    "CLOSED": "Closed"
-  },
   "Door of Time": {
     "OPEN": "Open",
     "CLOSED": "Closed"

@@ -56,7 +56,6 @@ define(["data/locations", "data/itemsAndSongs", "data/abilities", "data/ages", "
   ];
   access[Age.CHILD][Locations.DEATH_MOUNTAIN_TRAIL] = [
     {locations: [Locations.KAKARIKO_VILLAGE], abilities: [Abilities.ZLETTER]},
-    {locations: [Locations.KAKARIKO_VILLAGE], settings: {DEATH_MOUNTAIN_TRAIL: 'OPEN'}},
     // {locations: [Locations.DEATH_MOUNTAIN_CRATER]},
     {locations: [Locations.DODONGOS_CAVERN]},
     {locations: [Locations.GORON_CITY]}
