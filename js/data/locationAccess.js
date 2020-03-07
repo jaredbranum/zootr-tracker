@@ -339,13 +339,11 @@ define(["data/locations", "data/itemsAndSongs", "data/abilities", "data/ages", "
     {items: [Items.NOCTURNE_OF_SHADOW, Items.DINS_FIRE, Items.HOVER_BOOTS, Items.LENS_OF_TRUTH]},
     {items: [Items.NOCTURNE_OF_SHADOW, Items.DINS_FIRE, Items.HOVER_BOOTS], settings: {RULES: 'ACCESSIBLE'}},
     {items: [Items.NOCTURNE_OF_SHADOW, Items.DINS_FIRE, Items.HOVER_BOOTS], settings: {RULES: 'NO_MAJOR_GLITCHES'}},
-    {items: [Items.NOCTURNE_OF_SHADOW, Items.FIRE_ARROWS, Items.HOVER_BOOTS], settings: {RULES: 'ACCESSIBLE'}},
     {items: [Items.NOCTURNE_OF_SHADOW, Items.FIRE_ARROWS, Items.HOVER_BOOTS], settings: {RULES: 'NO_MAJOR_GLITCHES'}},
     // noctune, light torches, hookshot for gap
     {items: [Items.NOCTURNE_OF_SHADOW, Items.DINS_FIRE, Items.HOOKSHOT, Items.LENS_OF_TRUTH]},
     {items: [Items.NOCTURNE_OF_SHADOW, Items.DINS_FIRE, Items.HOOKSHOT], settings: {RULES: 'ACCESSIBLE'}},
     {items: [Items.NOCTURNE_OF_SHADOW, Items.DINS_FIRE, Items.HOOKSHOT], settings: {RULES: 'NO_MAJOR_GLITCHES'}},
-    {items: [Items.NOCTURNE_OF_SHADOW, Items.FIRE_ARROWS, Items.HOOKSHOT], settings: {RULES: 'ACCESSIBLE'}},
     {items: [Items.NOCTURNE_OF_SHADOW, Items.FIRE_ARROWS, Items.HOOKSHOT], settings: {RULES: 'NO_MAJOR_GLITCHES'}},
     // seamwalk (NMG)
     {locations: [Locations.GRAVEYARD], settings: {RULES: 'NO_MAJOR_GLITCHES'}, items: [Items.HOOKSHOT]},

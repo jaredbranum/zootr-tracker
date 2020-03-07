@@ -262,7 +262,7 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {age: Age.CHILD, abilities: [Abilities.BURN, Abilities.STRENGTH]}
     ], {visible: {peek: true}}),
     new ItemCheck("Darunia", Locations.GORON_CITY, [{age: Age.CHILD, items: [Items.ZELDAS_LULLABY, Items.SARIAS_SONG]}]),
-    new ItemCheck("Hot Rod Goron", Locations.GORON_CITY, [{age: Age.CHILD, items: [Items.BOMBS]}]),
+    new ItemCheck("Hot Rod Goron", Locations.GORON_CITY, [{age: Age.CHILD, abilities: [Abilities.BOMB]}]),
     new ItemCheck("Link the Goron", Locations.GORON_CITY, [
       {age: Age.ADULT, abilities: [Abilities.BOMB]},
       {age: Age.ADULT, abilities: [Abilities.STRENGTH]},
@@ -296,8 +296,8 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {age: Age.CHILD, abilities: [Abilities.SINK], items: [Items.SONG_OF_STORMS]},
     ]),
     new ItemCheck("Frogs 2", Locations.ZORAS_RIVER, [
-      {age: Age.CHILD, abilities: [Abilities.BLAST], items: [Items.ZELDAS_LULLABY, Items.EPONAS_SONG, Items.SARIAS_SONG, Items.SUNS_SONG, Items.SONG_OF_TIME]},
-      {age: Age.CHILD, abilities: [Abilities.SINK], items: [Items.ZELDAS_LULLABY, Items.EPONAS_SONG, Items.SARIAS_SONG, Items.SUNS_SONG, Items.SONG_OF_TIME]}
+      {age: Age.CHILD, abilities: [Abilities.BLAST], items: [Items.ZELDAS_LULLABY, Items.EPONAS_SONG, Items.SARIAS_SONG, Items.SUNS_SONG, Items.SONG_OF_TIME, Items.SONG_OF_STORMS]},
+      {age: Age.CHILD, abilities: [Abilities.SINK], items: [Items.ZELDAS_LULLABY, Items.EPONAS_SONG, Items.SARIAS_SONG, Items.SUNS_SONG, Items.SONG_OF_TIME, Items.SONG_OF_STORMS]}
     ]),
     // Zora's Domain
     new ItemCheck("Diving Game", Locations.ZORAS_DOMAIN, [{age: Age.CHILD}]),
@@ -311,8 +311,7 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
     new ItemCheck("Underwater Heart", Locations.ZORAS_FOUNTAIN, [
       {age: Age.ADULT, items: [Items.IRON_BOOTS]}
     ], {visible: {peek: true, requirements: [
-      {age: Age.ADULT, items: [Items.IRON_BOOTS]},
-      {age: Age.ADULT, items: [Items.GOLDEN_SCALE]}
+      {age: Age.CHILD}
     ]}}),
     // Lake Hylia
     new ItemCheck("Fishing (Child)", Locations.LAKE_HYLIA, [{age: Age.CHILD}]),
@@ -331,7 +330,7 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {age: Age.ADULT, items: [Items.HOOKSHOT, Items.FAIRY_OCARINA]},
     ], {visible: {peek: true}}),
     new ItemCheck("Lake Lab (dive)", Locations.LAKE_HYLIA, [
-      {age: Age.ADULT, items: [Items.GOLDEN_SCALE]},
+      {items: [Items.GOLDEN_SCALE]},
       {age: Age.ADULT, items: [Items.HOOKSHOT, Items.IRON_BOOTS]},
     ]),
     new ItemCheck("Shoot the Sun", Locations.LAKE_HYLIA, [
@@ -1003,8 +1002,8 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
     new ItemCheck("Ice Arrows", Locations.GERUDO_TRAINING_GROUNDS),
     // Ganon's Castle
     new ItemCheck("Double Defense Fairy", Locations.GANONS_CASTLE, [
-      {age: Age.ADULT, items: [Items.GOLDEN_GAUNTLETS]},
-      {age: Age.ADULT, glitches: true},
+      {age: Age.ADULT, items: [Items.GOLDEN_GAUNTLETS, Items.ZELDAS_LULLABY]},
+      {age: Age.ADULT, items: [Items.ZELDAS_LULLABY], glitches: true},
     ]),
     // Inside Ganon's Castle
     new ItemCheck("Forest Trial", Locations.INSIDE_GANONS_CASTLE),
