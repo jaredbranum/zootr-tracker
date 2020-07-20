@@ -311,7 +311,7 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
     new ItemCheck("Underwater Heart", Locations.ZORAS_FOUNTAIN, [
       {age: Age.ADULT, items: [Items.IRON_BOOTS]}
     ], {visible: {peek: true, requirements: [
-      {age: Age.CHILD}
+      {age: Age.ADULT}
     ]}}),
     // Lake Hylia
     new ItemCheck("Fishing (Child)", Locations.LAKE_HYLIA, [{age: Age.CHILD}]),
@@ -344,13 +344,16 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
     new ItemCheck("Crate Heart", Locations.GERUDO_VALLEY, [
       {age: Age.CHILD},
       {age: Age.ADULT, items: [Items.LONGSHOT]},
-      {age: Age.ADULT, items: [Items.EPONAS_SONG]},
-      {age: Age.ADULT, items: [Items.REQUIEM_OF_SPIRIT], offLogic: true},
+      {age: Age.ADULT, items: [Items.EPONAS_SONG, Items.HOVER_BOOTS], offLogic: true},
+      {age: Age.ADULT, items: [Items.REQUIEM_OF_SPIRIT, Items.HOVER_BOOTS], offLogic: true},
       {age: Age.ADULT, items: [Items.HOOKSHOT], glitches: true},
       {age: Age.ADULT, abilities: [Abilities.SHIELD, Abilities.BOMB], glitches: true},
       {age: Age.ADULT, items: [Items.HOVER_BOOTS], abilities: [Abilities.SHIELD, Abilities.SLASH], glitches: true},
       {age: Age.ADULT, items: [Items.HOVER_BOOTS, Items.MEGATON_HAMMER], glitches: true},
-    ], {visible: {peek: true}}),
+    ], {visible: {peek: true, requirements: [
+      {age: Age.ADULT, items: [Items.BOMBCHU, Items.EPONAS_SONG]},
+      {age: Age.ADULT, items: [Items.BOMBCHU, Items.REQUIEM_OF_SPIRIT]},
+    ]}}),
     new ItemCheck("Waterfall Heart", Locations.GERUDO_VALLEY, [{}], {
       visible: {peek: true}
     }),
@@ -503,7 +506,7 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {items: [Items.MIRROR_SHIELD], abilities: [Abilities.BOMB], glitches: true},
     ]),
     new ItemCheck("Block Room Eye", Locations.FOREST_TEMPLE, [
-      {items: [Items.FAIRY_BOW]},
+      {items: [Items.FAIRY_BOW], abilities: [Abilities.STRENGTH]},
     ]),
     new ItemCheck("Boss Key", Locations.FOREST_TEMPLE, [
       {items: [Items.FAIRY_BOW], abilities: [Abilities.STRENGTH]}
@@ -540,20 +543,36 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {abilities: [Abilities.BOMB]}
     ]),
     new ItemCheck("Boulder Maze 1", Locations.FIRE_TEMPLE, [
-      {abilities: [Abilities.STRENGTH]},
-      {offLogic: true},
+      {items: [Items.HOOKSHOT], abilities: [Abilities.STRENGTH]},
+      {items: [Items.HOOKSHOT], offLogic: true},
+      {items: [Items.FAIRY_BOW], abilities: [Abilities.STRENGTH]},
+      {items: [Items.FAIRY_BOW], offLogic: true},
+      {abilities: [Abilities.BOMB, Abilities.STRENGTH]},
+      {abilities: [Abilities.BOMB], offLogic: true}
     ]),
     new ItemCheck("Boulder Maze 2", Locations.FIRE_TEMPLE, [
-      {abilities: [Abilities.STRENGTH]},
-      {offLogic: true},
+      {items: [Items.HOOKSHOT], abilities: [Abilities.STRENGTH]},
+      {items: [Items.HOOKSHOT], offLogic: true},
+      {items: [Items.FAIRY_BOW], abilities: [Abilities.STRENGTH]},
+      {items: [Items.FAIRY_BOW], offLogic: true},
+      {abilities: [Abilities.BOMB, Abilities.STRENGTH]},
+      {abilities: [Abilities.BOMB], offLogic: true}
     ]),
     new ItemCheck("Map", Locations.FIRE_TEMPLE, [ // bow OR keys
-      {abilities: [Abilities.STRENGTH]},
-      {offLogic: true},
+      {items: [Items.HOOKSHOT], abilities: [Abilities.STRENGTH]},
+      {items: [Items.HOOKSHOT], offLogic: true},
+      {items: [Items.FAIRY_BOW], abilities: [Abilities.STRENGTH]},
+      {items: [Items.FAIRY_BOW], offLogic: true},
+      {abilities: [Abilities.BOMB, Abilities.STRENGTH]},
+      {abilities: [Abilities.BOMB], offLogic: true}
     ]),
     new ItemCheck("Boulder Maze (top)", Locations.FIRE_TEMPLE, [
-      {abilities: [Abilities.STRENGTH]},
-      {offLogic: true},
+      {items: [Items.HOOKSHOT], abilities: [Abilities.STRENGTH]},
+      {items: [Items.HOOKSHOT], offLogic: true},
+      {items: [Items.FAIRY_BOW], abilities: [Abilities.STRENGTH]},
+      {items: [Items.FAIRY_BOW], offLogic: true},
+      {abilities: [Abilities.BOMB, Abilities.STRENGTH]},
+      {abilities: [Abilities.BOMB], offLogic: true}
     ]),
     new ItemCheck("Shortcut Goron", Locations.FIRE_TEMPLE, [
       {abilities: [Abilities.BOMB, Abilities.STRENGTH]},
@@ -565,16 +584,24 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {items: [Items.LONGSHOT], offLogic: true},
     ]),
     new ItemCheck("Compass", Locations.FIRE_TEMPLE, [
-      {abilities: [Abilities.STRENGTH]},
-      {offLogic: true},
+      {items: [Items.HOOKSHOT], abilities: [Abilities.STRENGTH]},
+      {items: [Items.HOOKSHOT], offLogic: true},
+      {items: [Items.FAIRY_BOW], abilities: [Abilities.STRENGTH]},
+      {items: [Items.FAIRY_BOW], offLogic: true},
+      {abilities: [Abilities.BOMB, Abilities.STRENGTH]},
+      {abilities: [Abilities.BOMB], offLogic: true}
     ]),
     new ItemCheck("Megaton Hammer", Locations.FIRE_TEMPLE, [
       {abilities: [Abilities.BOMB, Abilities.STRENGTH]},
       {abilities: [Abilities.BLAST], offLogic: true},
     ]),
     new ItemCheck("Goron Below Hammer", Locations.FIRE_TEMPLE, [
-      {items: [Items.MEGATON_HAMMER, Items.SONG_OF_TIME], abilities: [Abilities.STRENGTH]},
-      {items: [Items.MEGATON_HAMMER], offLogic: true},
+      {items: [Items.HOOKSHOT, Items.MEGATON_HAMMER, Items.SONG_OF_TIME], abilities: [Abilities.STRENGTH]},
+      {items: [Items.HOOKSHOT, Items.MEGATON_HAMMER], offLogic: true},
+      {items: [Items.FAIRY_BOW, Items.MEGATON_HAMMER, Items.SONG_OF_TIME], abilities: [Abilities.STRENGTH]},
+      {items: [Items.FAIRY_BOW, Items.MEGATON_HAMMER], offLogic: true},
+      {items: [Items.MEGATON_HAMMER, Items.SONG_OF_TIME], abilities: [Abilities.BOMB, Abilities.STRENGTH]},
+      {items: [Items.MEGATON_HAMMER], abilities: [Abilities.BOMB], offLogic: true},
     ]),
     new ItemCheck("Volvagia", Locations.FIRE_TEMPLE, [
       {items: [Items.MEGATON_HAMMER], abilities: [Abilities.STRENGTH]},
