@@ -10,7 +10,7 @@ It's written entirely in JavaScript (client-side), so you can run it locally off
 ## Features
 
 * Available checks shown based on what you've collected
-* Support for Accessible rules, No Major Glitches, and Logic-Only
+* Support for Standard rules and Logic-Only
 * Configurable options for Rainbow Bridge, Open Door, Open Forest, and Fast Ganon
 * Options to shuffle Weird Egg, Ocarinas, and Gerudo's Card
 * A quick dialog box to assign medallions and stones to dungeons by reading the Pedestal of Time
@@ -27,7 +27,7 @@ It's written entirely in JavaScript (client-side), so you can run it locally off
 
 ## Logic Bugs
 
-I'm sure there will be some logic bugs with this, especially with the NMG and Logic-Only options. I built this for myself primarily to use when racing Accessible rules, so that's what I focused on. Feel free to let me know whenever you run across bugs and I'll try to fix them.
+I'm sure there will be some logic bugs with this, especially with the Logic-Only options. I built this for myself primarily to use when racing Standard rules, so that's what I focused on. Feel free to let me know whenever you run across bugs and I'll try to fix them.
 
 [@jaredbranum](https://twitter.com/jaredbranum) on Twitter  
 maxx#9586 on Discord

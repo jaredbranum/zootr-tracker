@@ -103,13 +103,13 @@ define(["data/locations", "data/itemsAndSongs", "data/abilities", "data/ages", "
     {locations: [Locations.GERUDO_VALLEY], settings: {RULES: 'NO_MAJOR_GLITCHES'}}
   ];
   access[Age.CHILD][Locations.HAUNTED_WASTELAND] = [
-    {locations: [Locations.DESERT_COLOSSUS], settings: {RULES: 'ACCESSIBLE'}},
+    {locations: [Locations.DESERT_COLOSSUS], settings: {RULES: 'STANDARD'}},
     {locations: [Locations.DESERT_COLOSSUS], settings: {RULES: 'NO_MAJOR_GLITCHES'}},
     {locations: [Locations.GERUDO_FORTRESS], settings: {RULES: 'NO_MAJOR_GLITCHES'}}
   ];
   access[Age.CHILD][Locations.DESERT_COLOSSUS] = [
     {items: [Items.REQUIEM_OF_SPIRIT]},
-    {locations: [Locations.HAUNTED_WASTELAND], settings: {RULES: 'ACCESSIBLE'}},
+    {locations: [Locations.HAUNTED_WASTELAND], settings: {RULES: 'STANDARD'}},
     {locations: [Locations.HAUNTED_WASTELAND], settings: {RULES: 'NO_MAJOR_GLITCHES'}},
     {locations: [Locations.HAUNTED_WASTELAND], settings: {RULES: 'LOGIC_ONLY'}, items: [Items.LENS_OF_TRUTH]},
     {locations: [Locations.SPIRIT_TEMPLE]}
@@ -159,7 +159,7 @@ define(["data/locations", "data/itemsAndSongs", "data/abilities", "data/ages", "
   access[Age.ADULT][Locations.SACRED_FOREST_MEADOW] = [
     {items: [Items.MINUET_OF_FOREST]},
     {locations: [Locations.LOST_WOODS], items: [Items.SARIAS_SONG]},
-    {locations: [Locations.LOST_WOODS], settings: {RULES: 'ACCESSIBLE'}},
+    {locations: [Locations.LOST_WOODS], settings: {RULES: 'STANDARD'}},
     {locations: [Locations.LOST_WOODS], settings: {RULES: 'NO_MAJOR_GLITCHES'}},
     {locations: [Locations.FOREST_TEMPLE]}
   ];
@@ -259,21 +259,21 @@ define(["data/locations", "data/itemsAndSongs", "data/abilities", "data/ages", "
     {locations: [Locations.GERUDO_VALLEY], settings: {RULES: 'NO_MAJOR_GLITCHES'}, items: [Items.MIRROR_SHIELD, Items.HOVER_BOOTS], abilities: [Abilities.SLASH]},
     {locations: [Locations.GERUDO_VALLEY], settings: {RULES: 'NO_MAJOR_GLITCHES'}, items: [Items.HYLIAN_SHIELD, Items.HOVER_BOOTS], abilities: [Abilities.SLASH]},
     // reverse wasteland (jail)
-    {locations: [Locations.HAUNTED_WASTELAND], settings: {RULES: 'ACCESSIBLE'}, items: [Items.HOOKSHOT]},
+    {locations: [Locations.HAUNTED_WASTELAND], settings: {RULES: 'STANDARD'}, items: [Items.HOOKSHOT]},
     {locations: [Locations.HAUNTED_WASTELAND], settings: {RULES: 'NO_MAJOR_GLITCHES'}, items: [Items.HOOKSHOT]},
     // reverse wasteland (gate open)
-    {locations: [Locations.GERUDO_VALLEY], settings: {RULES: 'ACCESSIBLE'}, checks: [{name: "Free the Carpenters", location: Locations.GERUDO_FORTRESS}]},
+    {locations: [Locations.GERUDO_VALLEY], settings: {RULES: 'STANDARD'}, checks: [{name: "Free the Carpenters", location: Locations.GERUDO_FORTRESS}]},
     {locations: [Locations.GERUDO_VALLEY], settings: {RULES: 'NO_MAJOR_GLITCHES'}, checks: [{name: "Free the Carpenters", location: Locations.GERUDO_FORTRESS}]}
   ];
   access[Age.ADULT][Locations.HAUNTED_WASTELAND] = [
     {locations: [Locations.GERUDO_FORTRESS], checks: [{name: "Free the Carpenters", location: Locations.GERUDO_FORTRESS}]},
     {locations: [Locations.GERUDO_FORTRESS], settings: {RULES: 'NO_MAJOR_GLITCHES'}},
     {locations: [Locations.DESERT_COLOSSUS], settings: {RULES: 'NO_MAJOR_GLITCHES'}},
-    {locations: [Locations.DESERT_COLOSSUS], settings: {RULES: 'ACCESSIBLE'}}
+    {locations: [Locations.DESERT_COLOSSUS], settings: {RULES: 'STANDARD'}}
   ];
   access[Age.ADULT][Locations.DESERT_COLOSSUS] = [
     {items: [Items.REQUIEM_OF_SPIRIT]},
-    {locations: [Locations.HAUNTED_WASTELAND], settings: {RULES: 'ACCESSIBLE'}},
+    {locations: [Locations.HAUNTED_WASTELAND], settings: {RULES: 'STANDARD'}},
     {locations: [Locations.HAUNTED_WASTELAND], settings: {RULES: 'NO_MAJOR_GLITCHES'}},
     {locations: [Locations.HAUNTED_WASTELAND], settings: {RULES: 'LOGIC_ONLY'}, items: [Items.LENS_OF_TRUTH, Items.HOVER_BOOTS]},
     {locations: [Locations.HAUNTED_WASTELAND], settings: {RULES: 'LOGIC_ONLY'}, items: [Items.LENS_OF_TRUTH, Items.HOOKSHOT]},
@@ -289,32 +289,32 @@ define(["data/locations", "data/itemsAndSongs", "data/abilities", "data/ages", "
     {items: [Items.BOLERO_OF_FIRE]},
     // hammer+hook from top to bottom, or scarecrow
     {locations: [Locations.DEATH_MOUNTAIN_TRAIL], items: [Items.MEGATON_HAMMER, Items.HOOKSHOT, Items.GORON_TUNIC]},
-    {locations: [Locations.DEATH_MOUNTAIN_TRAIL], settings: {RULES: 'ACCESSIBLE'}, items: [Items.MEGATON_HAMMER, Items.HOOKSHOT]},
+    {locations: [Locations.DEATH_MOUNTAIN_TRAIL], settings: {RULES: 'STANDARD'}, items: [Items.MEGATON_HAMMER, Items.HOOKSHOT]},
     {locations: [Locations.DEATH_MOUNTAIN_TRAIL], settings: {RULES: 'NO_MAJOR_GLITCHES'}, items: [Items.MEGATON_HAMMER, Items.HOOKSHOT]},
     // hammer+hovers from top to bottom
     {locations: [Locations.DEATH_MOUNTAIN_TRAIL], items: [Items.MEGATON_HAMMER, Items.HOVER_BOOTS, Items.GORON_TUNIC]},
-    {locations: [Locations.DEATH_MOUNTAIN_TRAIL], settings: {RULES: 'ACCESSIBLE'}, items: [Items.MEGATON_HAMMER, Items.HOVER_BOOTS]},
+    {locations: [Locations.DEATH_MOUNTAIN_TRAIL], settings: {RULES: 'STANDARD'}, items: [Items.MEGATON_HAMMER, Items.HOVER_BOOTS]},
     {locations: [Locations.DEATH_MOUNTAIN_TRAIL], settings: {RULES: 'NO_MAJOR_GLITCHES'}, items: [Items.MEGATON_HAMMER, Items.HOVER_BOOTS]},
     // no need to check for explosive methods from the top, since having explosives means you can go through goron city (below)
     // blast link the goron, hookshot through crater
     {locations: [Locations.GORON_CITY], items: [Items.HOOKSHOT, Items.GORON_TUNIC], abilities: [Abilities.BOMB]},
-    {locations: [Locations.GORON_CITY], settings: {RULES: 'ACCESSIBLE'}, items: [Items.HOOKSHOT], abilities: [Abilities.BOMB]},
+    {locations: [Locations.GORON_CITY], settings: {RULES: 'STANDARD'}, items: [Items.HOOKSHOT], abilities: [Abilities.BOMB]},
     {locations: [Locations.GORON_CITY], settings: {RULES: 'NO_MAJOR_GLITCHES'}, items: [Items.HOOKSHOT], abilities: [Abilities.BOMB]},
     {locations: [Locations.GORON_CITY], items: [Items.HOOKSHOT, Items.GORON_TUNIC], abilities: [Abilities.IGNITE]},
-    {locations: [Locations.GORON_CITY], settings: {RULES: 'ACCESSIBLE'}, items: [Items.HOOKSHOT], abilities: [Abilities.IGNITE]},
+    {locations: [Locations.GORON_CITY], settings: {RULES: 'STANDARD'}, items: [Items.HOOKSHOT], abilities: [Abilities.IGNITE]},
     {locations: [Locations.GORON_CITY], settings: {RULES: 'NO_MAJOR_GLITCHES'}, items: [Items.HOOKSHOT], abilities: [Abilities.IGNITE]},
     {locations: [Locations.GORON_CITY], items: [Items.HOOKSHOT, Items.GORON_TUNIC], abilities: [Abilities.STRENGTH]},
-    {locations: [Locations.GORON_CITY], settings: {RULES: 'ACCESSIBLE'}, items: [Items.HOOKSHOT], abilities: [Abilities.STRENGTH]},
+    {locations: [Locations.GORON_CITY], settings: {RULES: 'STANDARD'}, items: [Items.HOOKSHOT], abilities: [Abilities.STRENGTH]},
     {locations: [Locations.GORON_CITY], settings: {RULES: 'NO_MAJOR_GLITCHES'}, items: [Items.HOOKSHOT], abilities: [Abilities.STRENGTH]},
     // blast link the goron, hover boots through crater
     {locations: [Locations.GORON_CITY], items: [Items.HOVER_BOOTS, Items.GORON_TUNIC], abilities: [Abilities.BOMB]},
-    {locations: [Locations.GORON_CITY], settings: {RULES: 'ACCESSIBLE'}, items: [Items.HOVER_BOOTS], abilities: [Abilities.BOMB]},
+    {locations: [Locations.GORON_CITY], settings: {RULES: 'STANDARD'}, items: [Items.HOVER_BOOTS], abilities: [Abilities.BOMB]},
     {locations: [Locations.GORON_CITY], settings: {RULES: 'NO_MAJOR_GLITCHES'}, items: [Items.HOVER_BOOTS], abilities: [Abilities.BOMB]},
     {locations: [Locations.GORON_CITY], items: [Items.HOVER_BOOTS, Items.GORON_TUNIC], abilities: [Abilities.IGNITE]},
-    {locations: [Locations.GORON_CITY], settings: {RULES: 'ACCESSIBLE'}, items: [Items.HOVER_BOOTS], abilities: [Abilities.IGNITE]},
+    {locations: [Locations.GORON_CITY], settings: {RULES: 'STANDARD'}, items: [Items.HOVER_BOOTS], abilities: [Abilities.IGNITE]},
     {locations: [Locations.GORON_CITY], settings: {RULES: 'NO_MAJOR_GLITCHES'}, items: [Items.HOVER_BOOTS], abilities: [Abilities.IGNITE]},
     {locations: [Locations.GORON_CITY], items: [Items.HOVER_BOOTS, Items.GORON_TUNIC], abilities: [Abilities.STRENGTH]},
-    {locations: [Locations.GORON_CITY], settings: {RULES: 'ACCESSIBLE'}, items: [Items.HOVER_BOOTS], abilities: [Abilities.STRENGTH]},
+    {locations: [Locations.GORON_CITY], settings: {RULES: 'STANDARD'}, items: [Items.HOVER_BOOTS], abilities: [Abilities.STRENGTH]},
     {locations: [Locations.GORON_CITY], settings: {RULES: 'NO_MAJOR_GLITCHES'}, items: [Items.HOVER_BOOTS], abilities: [Abilities.STRENGTH]},
     // blast link the goron, megaflip through crater
     {locations: [Locations.GORON_CITY], settings: {RULES: 'NO_MAJOR_GLITCHES'}, items: [Items.HYLIAN_SHIELD], abilities: [Abilities.BOMB]},
@@ -323,11 +323,11 @@ define(["data/locations", "data/itemsAndSongs", "data/abilities", "data/ages", "
   access[Age.ADULT][Locations.WATER_TEMPLE] = [ // tunic required for logic
     // iron boots
     {locations: [Locations.LAKE_HYLIA], items: [Items.IRON_BOOTS, Items.HOOKSHOT, Items.ZORA_TUNIC]},
-    {locations: [Locations.LAKE_HYLIA], settings: {RULES: 'ACCESSIBLE'}, items: [Items.IRON_BOOTS, Items.HOOKSHOT]},
+    {locations: [Locations.LAKE_HYLIA], settings: {RULES: 'STANDARD'}, items: [Items.IRON_BOOTS, Items.HOOKSHOT]},
     {locations: [Locations.LAKE_HYLIA], settings: {RULES: 'NO_MAJOR_GLITCHES'}, items: [Items.IRON_BOOTS, Items.HOOKSHOT]},
     // gold scale (longshot or precise hookshot)
     {locations: [Locations.LAKE_HYLIA], items: [Items.GOLDEN_SCALE, Items.LONGSHOT, Items.ZORA_TUNIC]},
-    {locations: [Locations.LAKE_HYLIA], settings: {RULES: 'ACCESSIBLE'}, items: [Items.GOLDEN_SCALE, Items.HOOKSHOT]},
+    {locations: [Locations.LAKE_HYLIA], settings: {RULES: 'STANDARD'}, items: [Items.GOLDEN_SCALE, Items.HOOKSHOT]},
     {locations: [Locations.LAKE_HYLIA], settings: {RULES: 'NO_MAJOR_GLITCHES'}, items: [Items.GOLDEN_SCALE, Items.HOOKSHOT]},
     // cutscene dive (ocarina, hovers+bottle)
     {locations: [Locations.LAKE_HYLIA], settings: {RULES: 'NO_MAJOR_GLITCHES'}, items: [Items.FAIRY_OCARINA, Items.HOOKSHOT]},
@@ -337,12 +337,12 @@ define(["data/locations", "data/itemsAndSongs", "data/abilities", "data/ages", "
     // do gating on the lens & first gap here since nothing is in the dungeon before that
     // noctune, light torches, hover boots for gap
     {items: [Items.NOCTURNE_OF_SHADOW, Items.DINS_FIRE, Items.HOVER_BOOTS, Items.LENS_OF_TRUTH]},
-    {items: [Items.NOCTURNE_OF_SHADOW, Items.DINS_FIRE, Items.HOVER_BOOTS], settings: {RULES: 'ACCESSIBLE'}},
+    {items: [Items.NOCTURNE_OF_SHADOW, Items.DINS_FIRE, Items.HOVER_BOOTS], settings: {RULES: 'STANDARD'}},
     {items: [Items.NOCTURNE_OF_SHADOW, Items.DINS_FIRE, Items.HOVER_BOOTS], settings: {RULES: 'NO_MAJOR_GLITCHES'}},
     {items: [Items.NOCTURNE_OF_SHADOW, Items.FIRE_ARROWS, Items.HOVER_BOOTS], settings: {RULES: 'NO_MAJOR_GLITCHES'}},
     // noctune, light torches, hookshot for gap
     {items: [Items.NOCTURNE_OF_SHADOW, Items.DINS_FIRE, Items.HOOKSHOT, Items.LENS_OF_TRUTH]},
-    {items: [Items.NOCTURNE_OF_SHADOW, Items.DINS_FIRE, Items.HOOKSHOT], settings: {RULES: 'ACCESSIBLE'}},
+    {items: [Items.NOCTURNE_OF_SHADOW, Items.DINS_FIRE, Items.HOOKSHOT], settings: {RULES: 'STANDARD'}},
     {items: [Items.NOCTURNE_OF_SHADOW, Items.DINS_FIRE, Items.HOOKSHOT], settings: {RULES: 'NO_MAJOR_GLITCHES'}},
     {items: [Items.NOCTURNE_OF_SHADOW, Items.FIRE_ARROWS, Items.HOOKSHOT], settings: {RULES: 'NO_MAJOR_GLITCHES'}},
     // seamwalk (NMG)

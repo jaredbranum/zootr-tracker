@@ -1,8 +1,8 @@
 define({
   "Rules": {
-    "ACCESSIBLE": "Accessible",
+    "STANDARD": "Standard",
     "LOGIC_ONLY": "Logic Only",
-    "NO_MAJOR_GLITCHES": "No Major Glitches"
+    // "NO_MAJOR_GLITCHES": "No Major Glitches"
   },
   "Show Obtainable Only": true,
   "Hide Collected": true,
