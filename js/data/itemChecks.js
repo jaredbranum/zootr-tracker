@@ -1067,11 +1067,6 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {items: [Items.HOOKSHOT, Items.BOMBCHU, Items.LENS_OF_TRUTH]},
       {items: [Items.HOOKSHOT, Items.BOMBCHU], offLogic: true},
     ]),
-    new ItemCheck("Boss Key", Locations.INSIDE_GANONS_CASTLE, [
-      {settings: {FAST_GANON: true}},
-      {abilities: [Abilities.SHIELD, Abilities.BOMB], glitches: true},
-      {items: [Items.DINS_FIRE, Items.LONGSHOT, Items.MEGATON_HAMMER, Items.BOMBCHU, Items.LIGHT_ARROWS, Items.MIRROR_SHIELD, Items.GOLDEN_GAUNTLETS], abilities: [Abilities.BOTTLE]},
-      {items: [Items.FIRE_ARROWS, Items.LONGSHOT, Items.MEGATON_HAMMER, Items.BOMBCHU, Items.LIGHT_ARROWS, Items.MIRROR_SHIELD, Items.GOLDEN_GAUNTLETS], abilities: [Abilities.BOTTLE]},
-    ]),
+    new ItemCheck("Boss Key", Locations.INSIDE_GANONS_CASTLE),
   ];
 });

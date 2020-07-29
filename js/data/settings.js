@@ -20,13 +20,13 @@ define({
     "OPEN": "Open",
     "CLOSED": "Closed"
   },
-  "Tokensanity": {
-    "NONE": "None"
-    // "Dungeons Only",
-    // "All"
-  },
+  // "Tokensanity": {
+  //   "NONE": "None"
+  //   // "Dungeons Only",
+  //   // "All"
+  // },
   "Keysanity": false,
-  "Fast Ganon": true,
+  // "Fast Ganon": true,
   // "Shuffle Songs": false,
   "Shuffle Weird Egg": false,
   "Shuffle Ocarinas": false,
