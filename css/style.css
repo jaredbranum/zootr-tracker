@@ -62,10 +62,14 @@ body {
 
 #locations.hide-collected .region.collected,
 #locations.hide-collected .location.collected,
-#locations.hide-collected .item-check.collected {
+#locations.hide-collected .item-check.collected,
+#locations.hide-collected .region.collected > *,
+#locations.hide-collected .location.collected > *,
+#locations.hide-collected .item-check.collected > * {
   opacity: 0;
   animation: fadeOut 1s forwards;
   z-index: -1;
+  pointer-events: none;
 }
 
 @keyframes fadeOut {
