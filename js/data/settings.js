@@ -25,7 +25,7 @@ define({
   //   // "Dungeons Only",
   //   // "All"
   // },
-  "Keysanity": false,
+  "Always Show GS Rewards": true,
   // "Fast Ganon": true,
   // "Shuffle Songs": false,
   "Shuffle Weird Egg": false,

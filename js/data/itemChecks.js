@@ -150,18 +150,23 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       visible: {peek: true, requirements: [{}]}
     }),
     new ItemCheck("10 Gold Skulltulas", Locations.KAKARIKO_VILLAGE, [
+      {settings: {ALWAYS_SHOW_GS_REWARDS: true}},
       {itemCounts: [{count: 10, item: Items.GOLD_SKULLTULA}]},
     ]),
     new ItemCheck("20 Gold Skulltulas", Locations.KAKARIKO_VILLAGE, [
+      {settings: {ALWAYS_SHOW_GS_REWARDS: true}},
       {itemCounts: [{count: 20, item: Items.GOLD_SKULLTULA}]},
     ]),
     new ItemCheck("30 Gold Skulltulas", Locations.KAKARIKO_VILLAGE, [
+      {settings: {ALWAYS_SHOW_GS_REWARDS: true}},
       {itemCounts: [{count: 30, item: Items.GOLD_SKULLTULA}]},
     ]),
     new ItemCheck("40 Gold Skulltulas", Locations.KAKARIKO_VILLAGE, [
+      {settings: {ALWAYS_SHOW_GS_REWARDS: true}},
       {itemCounts: [{count: 40, item: Items.GOLD_SKULLTULA}]},
     ]),
     new ItemCheck("50 Gold Skulltulas", Locations.KAKARIKO_VILLAGE, [
+      {settings: {ALWAYS_SHOW_GS_REWARDS: true}},
       {itemCounts: [{count: 50, item: Items.GOLD_SKULLTULA}]},
     ]),
     new ItemCheck("Song of Storms", Locations.KAKARIKO_VILLAGE, [{age: Age.ADULT, items: [Items.FAIRY_OCARINA]}]),
