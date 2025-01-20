@@ -230,6 +230,7 @@ define(["data/locations", "data/itemsAndSongs", "data/abilities", "data/ages", "
   ];
   access[Age.ADULT][Locations.ZORAS_FOUNTAIN] = [
     {locations: [Locations.ZORAS_DOMAIN], items: [Items.RUTOS_LETTER]},
+    {locations: [Locations.ZORAS_DOMAIN], settings: {RULES: 'STANDARD'}},
     {locations: [Locations.JABU_JABUS_BELLY]},
     {locations: [Locations.ICE_CAVERN]}
   ];
