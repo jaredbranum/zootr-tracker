@@ -21,6 +21,7 @@ define(["data/locations", "data/itemsAndSongs", "data/abilities", "data/ages", "
   access[Age.CHILD][Locations.HYRULE_FIELD] = [
     {locations: [Locations.KOKIRI_FOREST], checks: [{name: "Queen Gohma", location: Locations.DEKU_TREE}]},
     {locations: [Locations.KOKIRI_FOREST], settings: {FOREST: 'OPEN'}},
+    {locations: [Locations.KOKIRI_FOREST], settings: {FOREST: 'CLOSED_DEKU'}},
     {locations: [Locations.HYRULE_MARKET]},
     {locations: [Locations.LON_LON_RANCH]},
     {locations: [Locations.KAKARIKO_VILLAGE]},

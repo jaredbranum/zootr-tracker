@@ -14,6 +14,7 @@ define({
   },
   "Forest": {
     "OPEN": "Open",
+    "CLOSED_DEKU": "Closed Deku",
     "CLOSED": "Closed"
   },
   "Door of Time": {
