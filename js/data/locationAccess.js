@@ -3,7 +3,12 @@ define(["data/locations", "data/itemsAndSongs", "data/abilities", "data/ages", "
 
   // CHILD
   access[Age.CHILD] = {};
-  access[Age.CHILD][Locations.KOKIRI_FOREST] = [{}];
+  access[Age.CHILD][Locations.KOKIRI_FOREST] = [
+    {locations: [Locations.LOST_WOODS]},
+    {locations: [Locations.HYRULE_FIELD]},
+    {locations: [Locations.DEKU_TREE], items: [Items.DEKU_SHIELD, Items.KOKIRI_SWORD]},
+    {locations: [Locations.DEKU_TREE], settings: {FOREST: 'OPEN'}}
+  ];
   access[Age.CHILD][Locations.LOST_WOODS] = [
     {locations: [Locations.KOKIRI_FOREST]},
     {locations: [Locations.SACRED_FOREST_MEADOW]},

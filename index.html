@@ -236,9 +236,14 @@
       <input id="age-adult" name="age" value="ADULT" type="radio">
       <label for="age-adult">Adult</label>
     </form>
-    <form id="check-pedestal">
-      <button>Check Pedestal</button>
-    </form>
+    <div id="set-buttons">
+      <form id="check-pedestal">
+        <button>Check Pedestal</button>
+      </form>
+      <form id="set-spawn">
+        <button>Set Spawn</button>
+      </form>
+    </div>
     <hr>
     <form id="settings">
       <table class="borderless"></table>
@@ -361,6 +366,11 @@
         <button type="button" class="pedestal-hint" value="Shdw">Shadow Temple</button>
         <button type="button" class="pedestal-hint" value="Spirit">Spirit Temple</button>
       </form>
+    </div>
+    <div id="set-spawn-popup" class="popup">
+      <h3>Set <span class="current-age">Child</span> Spawn</h3>
+      <form id="set-spawn-choose-location"></form>
+      <p>Current <span class="current-age">Child</span> Spawn: <span class="current-spawn"></span></p>
     </div>
   </div>
 </body>

@@ -1,7 +1,8 @@
 define(["data/ages", "data/locations", "data/locationAccess", "data/itemsAndSongs"], function(Age, Location, LocationAccess, Items){
-  return function Inventory(startingItems, startingLocations){
+  return function Inventory(startingItems, defaultSpawns){
     this.items = startingItems || [];
     this.age = Age.CHILD;
+    this.spawns = defaultSpawns;
     this.checks = [];
     this.settings = {};
 
@@ -134,6 +135,8 @@ define(["data/ages", "data/locations", "data/locationAccess", "data/itemsAndSong
           this.hasAccessTo(loc)
         }.bind(this));
       }
+
+      if (this.spawns[this.age] == location) return true;
 
       var hasNonLocationRequirements = function(req){
         if (req.abilities && !this.hasAbilities(req.abilities)){

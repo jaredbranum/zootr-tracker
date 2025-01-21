@@ -43,6 +43,14 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
     });
   };
 
+  var generateSpawnList = function(container){
+    var button;
+    $.each(Locations, function(_, location){
+      button = $('<button>').attr('type', 'button').addClass('spawn-location').val(location).text(location);
+      container.append(button);
+    });
+  };
+
   var generateChecklist = function(checks){
     checks.forEach(function(check){
       $('[data-location="'+toKey(check.location)+'"] ul').append(
@@ -319,6 +327,27 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
       }
     }.bind(this);
 
+    this.spawnFor = function(age){
+      return this.spawns[age];
+    }.bind(this);
+
+    this.setSpawn = function(e){
+      e.preventDefault();
+      var popup = $('#set-spawn-popup');
+      popup.find('.current-age').text(this.currentAge());
+      popup.find('.current-spawn').text(this.spawnFor(this.currentAge()))
+      showPopup('#set-spawn-popup');
+      return false;
+    }.bind(this);
+
+    this.recordSpawn = function(e){
+      var button = $(e.target).closest('.spawn-location');
+      this.spawns[this.currentAge()] = button.val();
+      this.inventory.spawns[this.currentAge()] = button.val();
+      this.refreshAccessible();
+      hidePopup();
+    }.bind(this);
+
     // begin state saving code
     this.saveState = function(){
       var key = window.location.hash || "";
@@ -328,6 +357,9 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
       window.localStorage.setItem(
         key + "/locations",
         $(".item-check.collected [type=checkbox]").toArray().map(x => x.id));
+      window.localStorage.setItem(
+        key + "/spawns",
+        Object.keys(tracker.spawns).map(x => x + '=' + tracker.spawns[x]));
       // A bit gross, since some settings are dropdowns and others are checkboxes
       // and serializeArray only does the right thing on the former.
       // Saves dropdown settings as NAME=VALUE and checkbox settings as either
@@ -346,11 +378,15 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
       var saved_locs = (window.localStorage.getItem(key + "/locations") || "")
         .split(",")
         .filter(x => !!x);
+      var saved_spawns = (window.localStorage.getItem(key + "/spawns") || "")
+        .split(",")
+        .filter(x => !!x);
       var saved_settings = (window.localStorage.getItem(key + "/settings") || "")
         .split(",")
         .filter(x => !!x);
       this.initializeItemIconsFrom(saved_items);
       this.initializeLocationChecksFrom(saved_locs);
+      this.initializeSpawnsFrom(saved_spawns);
       this.initializeSettingsFrom(saved_settings);
     }.bind(this);
 
@@ -394,6 +430,15 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
       }
     }.bind(this);
 
+    this.initializeSpawnsFrom = function(spawns){
+      console.log("Restoring saved spawns:", spawns);
+      if (spawns.length){
+        var spawns_obj = Object.fromEntries(spawns.map(x => x.split('=')));
+        this.spawns = $.extend({}, spawns_obj);
+        this.inventory.spawns = $.extend({}, spawns_obj);
+      }
+    }.bind(this);
+
     this.initializeSettingsFrom = function(sets){
       console.log("Restoring saved settings:", sets);
       for (var n in sets) {
@@ -429,10 +474,15 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
     }.bind(this);
 
     this.init = function(){
-      this.inventory = new Inventory(
-        [],
-        [Locations.KOKIRI_FOREST, Locations.LOST_WOODS]);
+      this.inventory = new Inventory([], {
+        [Age.CHILD]: Locations.KOKIRI_FOREST,
+        [Age.ADULT]: Locations.TEMPLE_OF_TIME
+      });
       this.settings = {};
+      this.spawns = {
+        [Age.CHILD]: Locations.KOKIRI_FOREST,
+        [Age.ADULT]: Locations.TEMPLE_OF_TIME
+      };
       $('.item').click(this.collect);
       $('.item').contextmenu(this.uncollect);
       $('.item-check [type="checkbox"]').on('change', this.check);
@@ -444,6 +494,8 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
       $('#settings input, #settings select').on('change', this.applySettings);
       $('#check-pedestal').submit(this.checkPedestal);
       $('#read-pedestal .pedestal-hint').click(this.recordPedestalHint);
+      $('#set-spawn').submit(this.setSpawn);
+      $('#set-spawn-choose-location .spawn-location').click(this.recordSpawn);
 
       this.applySettings();
     }.bind(this);
@@ -453,6 +505,7 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
     generateKey();
     setupPopups();
     generateLocationList($('#locations .locations'), Regions);
+    generateSpawnList($('#set-spawn-choose-location'));
     generateChecklist(ItemChecks);
     generateSettingsList($('#settings table'), Settings);
     window.checks = ItemChecks;

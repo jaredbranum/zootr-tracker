@@ -182,9 +182,17 @@ ul.item-checks li input[type=checkbox]:checked + label {
   text-align: center;
 }
 
-#check-pedestal {
+#set-buttons {
   margin: 10px;
   text-align: center; 
+}
+
+#set-buttons form {
+  display: inline-block;
+}
+
+button.spawn-location {
+  margin: 5px;
 }
 
 #settings {
