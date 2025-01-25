@@ -13,8 +13,8 @@ define({
     "OPEN": "Open"
   },
   "Forest": {
-    "OPEN": "Open",
     "CLOSED_DEKU": "Closed Deku",
+    "OPEN": "Open",
     "CLOSED": "Closed"
   },
   "Door of Time": {
@@ -27,9 +27,11 @@ define({
   //   // "All"
   // },
   "Always Show GS Rewards": true,
+  "Show GTG Without Card": true,
   // "Fast Ganon": true,
   // "Shuffle Songs": false,
   "Shuffle Weird Egg": false,
   "Shuffle Ocarinas": false,
   "Shuffle Gerudo's Card": false,
+  "Blue Fire Arrows": true
 });

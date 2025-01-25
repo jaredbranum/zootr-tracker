@@ -7,6 +7,7 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
     // Lost Woods
     new ItemCheck("Saria on Bridge", Locations.LOST_WOODS, [
       {settings: {FOREST: 'OPEN'}},
+      {settings: {FOREST: 'CLOSED_DEKU'}},
       {checks: {location: Locations.DEKU_TREE, name: "Queen Gohma"}}
     ], {preset: {item: Items.FAIRY_OCARINA, settings: {SHUFFLE_OCARINAS: false}}}),
     new ItemCheck("Scrub under Bridge", Locations.LOST_WOODS, [
@@ -307,7 +308,10 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
     // Zora's Domain
     new ItemCheck("Diving Game", Locations.ZORAS_DOMAIN, [{age: Age.CHILD}]),
     new ItemCheck("Torch Run", Locations.ZORAS_DOMAIN, [{age: Age.CHILD, items: [Items.DEKU_STICK]}]),
-    new ItemCheck("King Zora", Locations.ZORAS_DOMAIN, [{age: Age.ADULT, abilities: [Abilities.BOTTLE]}]),
+    new ItemCheck("King Zora", Locations.ZORAS_DOMAIN, [
+      {age: Age.ADULT, abilities: [Abilities.BOTTLE]},
+      {items: [Items.ICE_ARROWS], settings: {BLUE_FIRE_ARROWS: true}},
+    ]),
     // Zora's Fountain
     new ItemCheck("Farore's Wind Fairy", Locations.ZORAS_FOUNTAIN, [{items: [Items.ZELDAS_LULLABY], abilities: [Abilities.BOMB]}]),
     new ItemCheck("Iceberg Heart", Locations.ZORAS_FOUNTAIN, [{age: Age.ADULT}], {
@@ -940,14 +944,27 @@ define(["data/locations", "classes/itemCheck", "data/itemsAndSongs", "data/abili
       {items: [Items.ZELDAS_LULLABY], abilities: [Abilities.SLASH], offLogic: true}
     ]),
     // Ice Cavern
-    new ItemCheck("Map", Locations.ICE_CAVERN, [{abilities: [Abilities.BOTTLE]}]),
-    new ItemCheck("Compass", Locations.ICE_CAVERN, [{abilities: [Abilities.BOTTLE]}]),
+    new ItemCheck("Map", Locations.ICE_CAVERN, [
+      {abilities: [Abilities.BOTTLE]},
+      {items: [Items.ICE_ARROWS], settings: {BLUE_FIRE_ARROWS: true}},
+    ]),
+    new ItemCheck("Compass", Locations.ICE_CAVERN, [
+      {abilities: [Abilities.BOTTLE]},
+      {items: [Items.ICE_ARROWS], settings: {BLUE_FIRE_ARROWS: true}},
+    ]),
     new ItemCheck("Heart Piece", Locations.ICE_CAVERN, [
       {abilities: [Abilities.BOTTLE]},
       {offLogic: true},
+      {items: [Items.ICE_ARROWS], settings: {BLUE_FIRE_ARROWS: true}},
     ], {visible: {peek: true}, requirements: [{}]}),
-    new ItemCheck("Iron Boots", Locations.ICE_CAVERN, [{abilities: [Abilities.BOTTLE]}]),
-    new ItemCheck("Serenade of Water", Locations.ICE_CAVERN, [{abilities: [Abilities.BOTTLE, Abilities.ATTACK]}]),
+    new ItemCheck("Iron Boots", Locations.ICE_CAVERN, [
+      {abilities: [Abilities.BOTTLE]},
+      {items: [Items.ICE_ARROWS], settings: {BLUE_FIRE_ARROWS: true}},
+    ]),
+    new ItemCheck("Serenade of Water", Locations.ICE_CAVERN, [
+      {abilities: [Abilities.BOTTLE, Abilities.ATTACK]},
+      {items: [Items.ICE_ARROWS], settings: {BLUE_FIRE_ARROWS: true}},
+    ]),
     // Gerudo Training Grounds
     new ItemCheck("Lobby Eye Switch 1", Locations.GERUDO_TRAINING_GROUNDS, [
       {items: [Items.FAIRY_BOW]},

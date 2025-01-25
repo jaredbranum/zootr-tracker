@@ -193,7 +193,7 @@ define(["require", "jquery", "data/ages", "data/abilities", "data/locations", "d
       if ($box.is(':checked')){
         $check.addClass('collected');
         this.inventory.check(itemCheck);
-        if (preset && !this.inventory.hasItem(preset))
+        if (preset && (!this.inventory.hasItem(preset) || (preset.supers && preset.supers.length)))
           $('.item[data-item=' + preset.key + ']').click();
       } else {
         $check.removeClass('collected');

@@ -366,7 +366,8 @@ define(["data/locations", "data/itemsAndSongs", "data/abilities", "data/ages", "
   ];
   access[Age.ADULT][Locations.GERUDO_TRAINING_GROUNDS] = [
     {locations: [Locations.GERUDO_FORTRESS], items: [Items.GERUDOS_CARD], checks: [{name: "Free the Carpenters", location: Locations.GERUDO_FORTRESS}]},
-    {locations: [Locations.GERUDO_FORTRESS], settings: {RULES: 'NO_MAJOR_GLITCHES'}}
+    {locations: [Locations.GERUDO_FORTRESS], settings: {RULES: 'NO_MAJOR_GLITCHES'}},
+    {locations: [Locations.GERUDO_FORTRESS], settings: {SHOW_GTG_WITHOUT_CARD: true}}
   ];
   access[Age.ADULT][Locations.GANONS_CASTLE] = [
     {locations: [Locations.HYRULE_MARKET]}
